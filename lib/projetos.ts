@@ -28,7 +28,7 @@ export async function buscarProjetos(): Promise<Projeto[]> {
         }
     });
 
-    const promessas = arquivos.map(async (arquivo) => {
+    const promessas = arquivosEmOrdem.map(async (arquivo) => {
         const caminho = path.join(pastaProjetos, arquivo);
         // Conteúdo do arquivo
         const conteudo = await readFile(caminho, 'utf-8');
