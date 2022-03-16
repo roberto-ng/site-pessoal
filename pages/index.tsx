@@ -19,8 +19,18 @@ const Home: NextPage<Props> = ({ projetos }) => {
 
             <main className={styles.main}>
                 {projetos.map(projeto => (
-                    <div key={projeto.repo}>
-                        <p>{projeto.titulo}</p>
+                    <div key={projeto.repo} className={styles.cardProjeto}>
+                        <img src="/res/projetos/nesbrasa1.png" className={styles.thumb} />
+
+                        <div className={styles.cardProjetoDetalhes}>
+                            <p className={styles.titulo}>
+                                {projeto.titulo}
+                            </p>
+
+                            <p className={styles.descricao}>
+                                {projeto.descricao}
+                            </p>
+                        </div>
                     </div>
                 ))}
             </main>
