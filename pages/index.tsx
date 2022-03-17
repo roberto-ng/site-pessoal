@@ -17,7 +17,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className={styles.main}>
+            <div className={styles.main}>
                 {projetos.map(projeto => (
                     <div key={projeto.repo} className={styles.cardProjeto}>
                         <div 
@@ -37,7 +37,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
                         </div>
                     </div>
                 ))}
-            </main>
+            </div>
         </div>
     )
 };
