@@ -35,6 +35,9 @@
 
 .cardProjeto .thumb {
     width: 300px;
+    height: 212px;
+    background-position: center center;
+    background-size: cover;
 }
 
 .cardProjetoDetalhes {

@@ -20,7 +20,11 @@ const Home: NextPage<Props> = ({ projetos }) => {
             <main className={styles.main}>
                 {projetos.map(projeto => (
                     <div key={projeto.repo} className={styles.cardProjeto}>
-                        <img src="/res/projetos/nesbrasa1.png" className={styles.thumb} />
+                        <div 
+                            className={styles.thumb}
+                            style={{ backgroundImage: `url("/res/projetos/nesbrasa1.png")` }}
+                        >
+                        </div>
 
                         <div className={styles.cardProjetoDetalhes}>
                             <p className={styles.titulo}>
