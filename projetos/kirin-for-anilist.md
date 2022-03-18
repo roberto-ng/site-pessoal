@@ -5,6 +5,7 @@ descricao: 'Um cliente da rede social AniList para Android.'
 thumbnail: '/res/projetos/anilist-thumb.png'
 tags:
   - 'javascript'
+  - 'react'
   - 'react native'
 plataformas:
   - 'Android'

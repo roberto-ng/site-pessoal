@@ -19,7 +19,7 @@ export function getTexto(tag: string): string | null {
             return 'JavaScript';
 
         case 'react':
-            return 'React';
+            return 'React.js';
 
         case 'react native':
             return 'React Native';

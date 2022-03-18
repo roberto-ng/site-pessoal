@@ -41,6 +41,7 @@
     background-size: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0px 8px 0px;
 }
 
 .cardProjeto p {
