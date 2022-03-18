@@ -10,7 +10,7 @@
 .cardProjeto {
     color: #313338;
     width: 300px;
-    height: 340px;
+    height: 360px;
     margin: 10px;
     background-color: white;
     border: none;
@@ -42,7 +42,36 @@
     border-top-right-radius: 5px;
 }
 
+.cardProjeto p {
+    margin: 0;
+}
+
 .cardProjetoDetalhes {
     padding: 10px;
     padding-top: 0px;
+}
+
+.cardProjeto .subtitulo {
+    margin-top: 10px;
+    text-align: center;
+    font-size: large;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tag {
+    margin: 5px;
+    background-color: #313338;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.tag p {
+    font-size: medium;
 }

@@ -1,4 +1,4 @@
-export function formatarTags(tags: string[]) {
+export function formatar(tags: string[]) {
     return tags
         .map(getTexto)
         .join(', ');
@@ -27,4 +27,9 @@ export function getTexto(tag: string): string | null {
         default:
             return null;
     }
+}
+
+export default {
+    formatar,
+    getTexto,
 }

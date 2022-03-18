@@ -6,4 +6,6 @@ thumbnail: '/res/projetos/anilist-thumb.png'
 tags:
   - 'javascript'
   - 'react native'
+plataformas:
+  - 'Desktop'
 ---

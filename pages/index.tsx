@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { buscarProjetos, Projeto } from '../lib/projetos'
-import { formatarTags } from '../lib/tags'
+import Tags from '../lib/tags'
 
 interface Props {
     projetos: Projeto[];
@@ -36,9 +36,16 @@ const Home: NextPage<Props> = ({ projetos }) => {
                                 {projeto.descricao}
                             </p>
 
-                            <p>
-                                Feito com: {formatarTags(projeto.tags)}
-                            </p>
+                            <div className={styles.subtitulo}>
+                                <p>Feito com: </p>
+                                <div className={styles.tags}>
+                                    {projeto.tags.map(tag => (
+                                        <div className={styles.tag} key={tag}>
+                                            <p>{Tags.getTexto(tag)}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ))}
