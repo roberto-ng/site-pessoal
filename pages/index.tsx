@@ -19,7 +19,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
             </Head>
 
             <div className={styles.main}>
-                {projetos.map(projeto => (
+                {projetos.reverse().map(projeto => (
                     <div key={projeto.repo} className={styles.cardProjeto}>
                         <div 
                             className={styles.thumb}
@@ -35,6 +35,30 @@ const Home: NextPage<Props> = ({ projetos }) => {
                             <p className={styles.descricao}>
                                 {projeto.descricao}
                             </p>
+
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                                {(projeto.link != null) && (
+                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                        <a 
+                                            href={projeto.link} 
+                                            className={styles.link} 
+                                            target="_blank"
+                                        >
+                                            Abrir site
+                                        </a>
+                                    </div>
+                                )}
+
+                                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                    <a 
+                                        href="#" 
+                                        className={styles.link} 
+                                    >
+                                        Saber mais
+                                    </a>
+                                </div>
+
+                            </div>
 
                             <div className={styles.subtitulo}>
                                 <p>Feito com: </p>

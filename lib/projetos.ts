@@ -7,12 +7,29 @@ export interface Projeto {
     repo: string;
     descricao: string;
     thumbnail: string | null;
+    link: string | null;
     tags: string[];
     plataformas: string[];
     texto: string | null;
 }
 
 const pastaProjetos = path.join(process.cwd(), 'projetos');
+
+function lerDados(arquivo: string, incluirTexto: boolean = false): Projeto {
+    const dados = matter(arquivo);
+    const texto = (incluirTexto) ? dados.content : null;
+
+    return {
+        titulo: dados.data.titulo ?? '',
+        repo: dados.data.repo ?? '',
+        descricao: dados.data.descricao ?? '',
+        thumbnail: dados.data.thumbnail ?? null,
+        link: dados.data.link ?? null,
+        tags: dados.data.tags ?? [],
+        plataformas: dados.data.plataformas ?? [],
+        texto: texto,
+    };
+}
 
 export async function buscarProjetos(): Promise<Projeto[]> {
     const arquivos = await readdir(pastaProjetos);
@@ -35,18 +52,8 @@ export async function buscarProjetos(): Promise<Projeto[]> {
         const caminho = path.join(pastaProjetos, arquivo);
         // Conteúdo do arquivo
         const conteudo = await readFile(caminho, 'utf-8');
-        // Pegar dados do arquivo
-        const dados = matter(conteudo);
-
-        return {
-            titulo: dados.data.titulo ?? '',
-            repo: dados.data.repo ?? '',
-            descricao: dados.data.descricao ?? '',
-            thumbnail: dados.data.thumbnail ?? null,
-            tags: dados.data.tags ?? [],
-            plataformas: dados.data.plataformas ?? [],
-            texto: null,
-        };
+        // ler dados do arquivo
+        return lerDados(conteudo);
     });
 
     // Esperar todos os arquivos serem lidos
@@ -56,15 +63,5 @@ export async function buscarProjetos(): Promise<Projeto[]> {
 export async function buscarProjeto(repo: string): Promise<Projeto> {
     const arquivo = path.join(pastaProjetos, `${repo}.md`);
     const conteudo = await readFile(arquivo, 'utf-8');
-    const dados = matter(conteudo);
-
-    return {
-        texto: dados.content,
-        titulo: dados.data.titulo ?? '',
-        repo: dados.data.repo ?? '',
-        descricao: dados.data.descricao ?? '',
-        thumbnail: dados.data.thumbnail ?? null,
-        tags: dados.data.tags ?? [],
-        plataformas: dados.data.plataformas ?? [],
-    };
+    return lerDados(conteudo, true);
 }
