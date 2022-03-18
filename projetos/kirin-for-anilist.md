@@ -7,5 +7,5 @@ tags:
   - 'javascript'
   - 'react native'
 plataformas:
-  - 'Desktop'
+  - 'Android'
 ---

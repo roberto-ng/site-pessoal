@@ -46,6 +46,17 @@ const Home: NextPage<Props> = ({ projetos }) => {
                                     ))}
                                 </div>
                             </div>
+
+                            <div className={styles.subtitulo}>
+                                <p>Disponível para: </p>
+                                <div className={styles.tags}>
+                                    {projeto.plataformas.map(plataforma => (
+                                        <div className={styles.tag} key={plataforma}>
+                                            <p>{plataforma}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ))}

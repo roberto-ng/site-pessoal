@@ -8,6 +8,7 @@ export interface Projeto {
     descricao: string;
     thumbnail: string | null;
     tags: string[];
+    plataformas: string[];
     texto: string | null;
 }
 
@@ -43,6 +44,7 @@ export async function buscarProjetos(): Promise<Projeto[]> {
             descricao: dados.data.descricao ?? '',
             thumbnail: dados.data.thumbnail ?? null,
             tags: dados.data.tags ?? [],
+            plataformas: dados.data.plataformas ?? [],
             texto: null,
         };
     });
@@ -63,5 +65,6 @@ export async function buscarProjeto(repo: string): Promise<Projeto> {
         descricao: dados.data.descricao ?? '',
         thumbnail: dados.data.thumbnail ?? null,
         tags: dados.data.tags ?? [],
+        plataformas: dados.data.plataformas ?? [],
     };
 }

@@ -6,4 +6,6 @@ thumbnail: '/res/projetos/nesbrasa-thumb.png'
 tags:
   - 'c++'
   - 'gtk'
+plataformas:
+  - 'Desktop'
 ---

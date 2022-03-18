@@ -6,4 +6,6 @@ tags:
   - 'javascript'
   - 'react'
   - 'electron'
+plataformas:
+  - 'Desktop'
 ---
