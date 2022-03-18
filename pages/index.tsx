@@ -22,7 +22,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
                     <div key={projeto.repo} className={styles.cardProjeto}>
                         <div 
                             className={styles.thumb}
-                            style={{ backgroundImage: `url("/res/projetos/nesbrasa1.png")` }}
+                            style={{ backgroundImage: `url("${projeto.thumbnail}")` }}
                         >
                         </div>
 

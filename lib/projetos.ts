@@ -6,8 +6,9 @@ export interface Projeto {
     titulo: string;
     repo: string;
     descricao: string;
+    thumbnail: string | null;
     tags: string[];
-    texto?: string;
+    texto: string | null;
 }
 
 const pastaProjetos = path.join(process.cwd(), 'projetos');
@@ -40,13 +41,14 @@ export async function buscarProjetos(): Promise<Projeto[]> {
             titulo: dados.data.titulo ?? '',
             repo: dados.data.repo ?? '',
             descricao: dados.data.descricao ?? '',
+            thumbnail: dados.data.thumbnail ?? null,
             tags: dados.data.tags ?? [],
+            texto: null,
         };
     });
 
     // Esperar todos os arquivos serem lidos
-    const projetos = await Promise.all(promessas);
-    return projetos;
+    return await Promise.all(promessas);
 }
 
 export async function buscarProjeto(repo: string): Promise<Projeto> {
@@ -59,6 +61,7 @@ export async function buscarProjeto(repo: string): Promise<Projeto> {
         titulo: dados.data.titulo ?? '',
         repo: dados.data.repo ?? '',
         descricao: dados.data.descricao ?? '',
+        thumbnail: dados.data.thumbnail ?? null,
         tags: dados.data.tags ?? [],
     };
 }
