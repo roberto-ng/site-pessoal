@@ -51,8 +51,9 @@ const Home: NextPage<Props> = ({ projetos }) => {
 
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <a 
-                                        href="#" 
+                                        href={`https://github.com/roberto-ng/${projeto.repo}`}
                                         className={styles.link} 
+                                        target="_blank"
                                     >
                                         Saber mais
                                     </a>
