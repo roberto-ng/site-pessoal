@@ -2,4 +2,14 @@
     background-color: white;
     height: 80px;
     box-shadow: rgb(167, 167, 167) 0px 0px 5px 0.5px;
+    font-family: 'Suez One', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#header h1 {
+    margin: 0;
+    color: #313338;
+    text-transform: uppercase;
 }
