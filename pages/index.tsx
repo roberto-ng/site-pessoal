@@ -19,7 +19,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
             </Head>
 
             <div className={styles.cardsWrapper}>
-                {projetos.reverse().map(projeto => (
+                {projetos.map(projeto => (
                     <div key={projeto.repo} className={styles.cardProjeto}>
                         <div 
                             className={styles.thumb}

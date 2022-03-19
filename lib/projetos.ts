@@ -33,15 +33,15 @@ function lerDados(arquivo: string, incluirTexto: boolean = false): Projeto {
 
 export async function buscarProjetos(): Promise<Projeto[]> {
     const arquivos = await readdir(pastaProjetos);
-    // Ordenar arquivos alfabeticamente 
+    // Ordenar arquivos 
     const arquivosEmOrdem = arquivos.sort((a: string, b: string) => {
         const nomeA = a.toLowerCase();
         const nomeB = b.toLowerCase();
 
-        if (nomeA < nomeB) {
+        if (nomeA > nomeB) {
             return -1;
         }
-        else if (nomeA > nomeB) {
+        else if (nomeA < nomeB) {
             return 1;
         } else {
             return 0;
