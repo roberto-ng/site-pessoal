@@ -7,6 +7,7 @@ link: 'https://roberto-ng.github.io/site-de-turismo/'
 tags:
   - 'javascript'
   - 'react'
+  - 'next'
 plataformas:
   - 'Web'
 ---

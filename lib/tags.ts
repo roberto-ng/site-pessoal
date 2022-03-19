@@ -18,6 +18,9 @@ export function getTexto(tag: string): string | null {
         case 'javascript':
             return 'JavaScript';
 
+        case 'next':
+            return 'Next.js';
+
         case 'react':
             return 'React.js';
 
