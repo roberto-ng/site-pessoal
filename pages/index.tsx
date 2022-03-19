@@ -18,7 +18,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className={styles.main}>
+            <div className={styles.cardsWrapper}>
                 {projetos.reverse().map(projeto => (
                     <div key={projeto.repo} className={styles.cardProjeto}>
                         <div 
