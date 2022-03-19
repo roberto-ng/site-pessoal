@@ -43,6 +43,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
                                             href={projeto.link} 
                                             className={styles.link} 
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             Abrir site
                                         </a>
@@ -54,6 +55,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
                                         href={`https://github.com/roberto-ng/${projeto.repo}`}
                                         className={styles.link} 
                                         target="_blank"
+                                        rel="noreferrer"
                                     >
                                         Saber mais
                                     </a>
