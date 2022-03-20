@@ -1,3 +1,21 @@
+@keyframes fadeIn {
+    0% { 
+        opacity: 0; 
+        transform: translateY(50px);
+    }
+    50% {
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(0px);
+    }
+} 
+
+.fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));

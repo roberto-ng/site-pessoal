@@ -20,7 +20,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
 
             <div className={styles.grid}>
                 {projetos.map(projeto => (
-                    <div key={projeto.repo} className={styles.cardProjeto}>
+                    <div key={projeto.repo} className={`${styles.cardProjeto} ${styles.fadeIn}`}>
                         <div 
                             className={styles.thumb}
                             style={{ backgroundImage: `url("${projeto.thumbnail}")` }}
