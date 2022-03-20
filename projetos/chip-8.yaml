@@ -1,4 +1,3 @@
----
 titulo: 'Chip-8 TS'
 repo: 'chip-8'
 descricao: 'Uma reimplementação da Máquina Virtual Chip-8.'
@@ -8,4 +7,3 @@ tags:
   - 'javascript'
 plataformas:
   - 'Web'
----

@@ -1,4 +1,3 @@
----
 titulo: 'Turismo'
 repo: 'site-de-turismo'
 descricao: 'Um site de uma empresa de turismo.'
@@ -10,4 +9,3 @@ tags:
   - 'next'
 plataformas:
   - 'Web'
----

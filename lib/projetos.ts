@@ -1,6 +1,6 @@
 import { readFile, readdir } from 'fs/promises'
 import path from 'path'
-import matter from 'gray-matter'
+import YAML from 'yaml'
 
 export interface Projeto {
     titulo: string;
@@ -10,24 +10,21 @@ export interface Projeto {
     link: string | null;
     tags: string[];
     plataformas: string[];
-    texto: string | null;
 }
 
 const pastaProjetos = path.join(process.cwd(), 'projetos');
 
-function lerDados(arquivo: string, incluirTexto: boolean = false): Projeto {
-    const dados = matter(arquivo);
-    const texto = (incluirTexto) ? dados.content : null;
+function lerDados(arquivo: string): Projeto {
+    const dados = YAML.parse(arquivo);
 
     return {
-        titulo: dados.data.titulo ?? '',
-        repo: dados.data.repo ?? '',
-        descricao: dados.data.descricao ?? '',
-        thumbnail: dados.data.thumbnail ?? null,
-        link: dados.data.link ?? null,
-        tags: dados.data.tags ?? [],
-        plataformas: dados.data.plataformas ?? [],
-        texto: texto,
+        titulo: dados.titulo ?? '',
+        repo: dados.repo ?? '',
+        descricao: dados.descricao ?? '',
+        thumbnail: dados.thumbnail ?? null,
+        link: dados.link ?? null,
+        tags: dados.tags ?? [],
+        plataformas: dados.plataformas ?? [],
     };
 }
 
@@ -61,7 +58,7 @@ export async function buscarProjetos(): Promise<Projeto[]> {
 }
 
 export async function buscarProjeto(repo: string): Promise<Projeto> {
-    const arquivo = path.join(pastaProjetos, `${repo}.md`);
+    const arquivo = path.join(pastaProjetos, `${repo}.yaml`);
     const conteudo = await readFile(arquivo, 'utf-8');
-    return lerDados(conteudo, true);
+    return lerDados(conteudo);
 }
