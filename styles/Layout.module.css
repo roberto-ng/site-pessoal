@@ -17,3 +17,10 @@
     text-transform: uppercase;
     font-display: optional;
 }
+
+@media screen and (max-width: 340px) {
+    #header h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+}

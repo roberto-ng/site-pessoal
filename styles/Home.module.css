@@ -1,4 +1,4 @@
-.cardsWrapper {
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     justify-items: center;
@@ -9,7 +9,7 @@
 .cardProjeto {
     color: #313338;
     width: 300px;
-    height: 430px;
+    min-height: 430px;
     margin: 10px;
     background-color: white;
     border: none;
@@ -56,6 +56,13 @@
     padding-top: 0px;
 }
 
+.cardProjeto .links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .cardProjeto .subtitulo {
     text-align: center;
     font-size: large;
@@ -64,6 +71,7 @@
 .tags {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     white-space: nowrap;
@@ -98,4 +106,19 @@
 
 .link p {
     font-size: medium;
+}
+
+@media screen and (max-width: 340px) {
+    .grid {
+        grid-template-columns: none;
+    }
+
+    .cardProjeto {
+        width: 95%;
+        max-width: 95%;
+    }
+
+    .cardProjeto .thumb {
+        width: 95%;
+    }
 }
