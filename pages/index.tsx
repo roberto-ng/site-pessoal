@@ -57,7 +57,7 @@ const Home: NextPage<Props> = ({ projetos }) => {
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        Saber mais
+                                        Repositório
                                     </a>
                                 </div>
 
