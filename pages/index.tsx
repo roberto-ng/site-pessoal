@@ -18,6 +18,15 @@ const Home: NextPage<Props> = ({ projetos }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
+            <div className={styles.sobreMim}>
+                <h1>Sobre mim:</h1>
+                <p>Lorem ipsum dolor sit amet</p>
+            </div>
+
+            <h1 style={{ textAlign: 'center', marginTop: 20 }}>
+                Portfólio:
+            </h1>
+
             <div className={styles.grid}>
                 {projetos.map(projeto => (
                     <div key={projeto.repo} className={`${styles.cardProjeto} ${styles.fadeIn}`}>
