@@ -31,7 +31,8 @@
 }
 
 .sobreMim .texto {
-    padding: 10px;
+    font-size: large;
+    padding: 20px;
     max-width: 800px;
     margin-left: 20px;
     margin-right: 20px;
