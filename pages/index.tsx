@@ -22,10 +22,20 @@ const Home: NextPage<Props> = ({ projetos, textoSobreMim }) => {
 
             <div className={styles.sobreMim}>
                 <h1>Sobre mim:</h1>
-                <div 
-                    dangerouslySetInnerHTML={{ __html: textoSobreMim }} 
-                    className={`${styles.texto} ${styles.fadeIn}`}
-                />
+                <div className={`${styles.caixa} ${styles.fadeIn}`}>
+                    <div 
+                        dangerouslySetInnerHTML={{ __html: textoSobreMim }} 
+                        className={styles.texto}
+                    />
+                    <div className={styles.contato}>
+                        <p>
+                            Contato: <a href="mailto:robertoguedesn@gmail.com">robertoguedesn@gmail.com</a>
+                        </p>
+                        <p>
+                            Meu GitHub: <a href="https://github.com/roberto-ng">https://github.com/roberto-ng</a>
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <h1 style={{ textAlign: 'center', marginTop: 20 }}>

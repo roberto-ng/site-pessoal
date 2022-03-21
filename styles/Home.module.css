@@ -30,8 +30,7 @@
     margin: 0;
 }
 
-.sobreMim .texto {
-    font-size: large;
+.sobreMim .caixa {
     padding: 20px;
     max-width: 800px;
     margin-left: 20px;
@@ -41,6 +40,10 @@
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
     transition: all 0.3s ease 0s;
+}
+
+.sobreMim .texto {
+    font-size: large;
     text-align: justify;
 }
 
@@ -48,14 +51,21 @@
     margin: 0px;
 }
 
+.sobreMim a {
+    text-decoration: underline;
+}
+
 .sobreMim ul {
     margin: 2px;
 }
 
-.sobreMim .texto:hover {
+.sobreMim .caixa:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.sobreMim .contato {
+    font-size: large;
+}
 
 .grid {
     display: grid;
@@ -166,7 +176,7 @@
     font-size: medium;
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 350px) {
     .grid {
         grid-template-columns: none;
     }
@@ -178,5 +188,9 @@
 
     .cardProjeto .thumb {
         width: 95%;
+    }
+
+    .sobreMim .texto {
+        text-align: left;
     }
 }
