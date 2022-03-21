@@ -1,8 +1,7 @@
 titulo: 'Portfólio'
 repo: 'roberto-ng.github.io'
-descricao: 'Site feito para mostrar meus projetos.'
+descricao: 'O site que você está vendo agora. Foi feito para mostrar meus projetos.'
 thumbnail: '/res/projetos/portfolio-thumb.png'
-link: 'https://roberto-ng.github.io/'
 tags:
   - 'javascript'
   - 'react'
