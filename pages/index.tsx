@@ -4,12 +4,14 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { buscarProjetos, Projeto } from '../lib/projetos'
 import Tags from '../lib/tags'
+import { getTexto } from '../lib/textos'
 
 interface Props {
     projetos: Projeto[];
+    textoSobreMim: string;
 }
 
-const Home: NextPage<Props> = ({ projetos }) => {
+const Home: NextPage<Props> = ({ projetos, textoSobreMim }) => {
     return (
         <div className={styles.container}>
             <Head>
@@ -20,7 +22,10 @@ const Home: NextPage<Props> = ({ projetos }) => {
 
             <div className={styles.sobreMim}>
                 <h1>Sobre mim:</h1>
-                <p>Lorem ipsum dolor sit amet</p>
+                <div 
+                    dangerouslySetInnerHTML={{ __html: textoSobreMim }} 
+                    className={`${styles.texto} ${styles.fadeIn}`}
+                />
             </div>
 
             <h1 style={{ textAlign: 'center', marginTop: 20 }}>
@@ -102,11 +107,15 @@ const Home: NextPage<Props> = ({ projetos }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const projetos = await buscarProjetos();
+    const [projetos, textoSobreMim] = await Promise.all([
+        buscarProjetos(), 
+        getTexto('sobre-mim'),
+    ]);
 
     return {
         props: {
             projetos,
+            textoSobreMim,
         },
     };
 };

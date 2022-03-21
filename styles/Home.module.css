@@ -1,9 +1,9 @@
 @keyframes fadeIn {
     0% { 
         opacity: 0; 
-        transform: translateY(50px);
+        transform: translateY(30px);
     }
-    50% {
+    70% {
         opacity: 1; 
     }
     100% { 
@@ -30,10 +30,11 @@
     margin: 0;
 }
 
-.sobreMim p {
-    margin: 0;
-    padding: 8px;
-    max-width: 300px;
+.sobreMim .texto {
+    padding: 10px;
+    max-width: 400px;
+    margin-left: 20px;
+    margin-right: 20px;
     background-color: white;
     border: none;
     border-radius: 8px;
@@ -42,7 +43,11 @@
     text-align: justify;
 }
 
-.sobreMim p:hover {
+.sobreMim p {
+    margin: 0;
+}
+
+.sobreMim .texto:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
