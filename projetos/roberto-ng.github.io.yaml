@@ -1,6 +1,6 @@
 titulo: 'Portfólio'
 repo: 'roberto-ng.github.io'
-descricao: 'O site que você está vendo agora. Foi feito para mostrar meus projetos.'
+descricao: 'O site que você está vendo agora.'
 thumbnail: '/res/projetos/portfolio-thumb.png'
 tags:
   - 'javascript'
