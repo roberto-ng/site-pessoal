@@ -2,8 +2,8 @@ Tenho 24 anos e sou um desenvolvedor front-end formado em Ciência da Computaç�
 
 Possuo experiência com:
 * JavaScript/TypeScript
-* React 
+* React e React Native
 * C/C++ 
 * C# 
 * Kotlin
-* GraphQL 
+* Redux
