@@ -27,6 +27,9 @@ export function getTexto(tag: string): string | null {
         case 'react native':
             return 'React Native';
 
+        case 'redux':
+            return 'Redux';
+
         default:
             return null;
     }
