@@ -1,6 +1,6 @@
 Site feito para mostrar meus projetos. Disponível em [https://roberto-ng.github.io/](https://roberto-ng.github.io/)
 
-## Getting Started
+## Instruções
 
 Primeiro, inicie o servidor de desenvolvimento:
 
