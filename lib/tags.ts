@@ -29,6 +29,9 @@ export function getTexto(tag: string): string | null {
 
         case 'redux':
             return 'Redux';
+            
+        case 'strapi':
+            return 'Strapi CMS';
 
         default:
             return null;
