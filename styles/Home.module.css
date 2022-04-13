@@ -55,9 +55,11 @@
     margin: 2px;
 }
 
+/*
 .sobreMim .caixa:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+*/
 
 .sobreMim .contato {
     font-size: large;
