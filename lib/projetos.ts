@@ -2,12 +2,13 @@ import { readFile, readdir } from 'fs/promises'
 import path from 'path'
 import YAML from 'yaml'
 
-export interface Projeto {
+export type Projeto = {
     titulo: string;
     repo: string;
     descricao: string;
     thumbnail: string | null;
     link: string | null;
+    download_link: string | null,
     tags: string[];
     plataformas: string[];
 }
@@ -23,6 +24,7 @@ function lerDados(arquivo: string): Projeto {
         descricao: dados.descricao ?? '',
         thumbnail: dados.thumbnail ?? null,
         link: dados.link ?? null,
+        download_link: dados.download_link ?? null,
         tags: dados.tags ?? [],
         plataformas: dados.plataformas ?? [],
     };
@@ -35,10 +37,10 @@ export async function buscarProjetos(): Promise<Projeto[]> {
         const nomeA = a.toLowerCase();
         const nomeB = b.toLowerCase();
 
-        if (nomeA > nomeB) {
+        if (nomeA < nomeB) {
             return -1;
         }
-        else if (nomeA < nomeB) {
+        else if (nomeA > nomeB) {
             return 1;
         } else {
             return 0;

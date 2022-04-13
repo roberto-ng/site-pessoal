@@ -8,32 +8,24 @@ import { getTexto } from '../lib/textos'
 
 interface Props {
     projetos: Projeto[];
-    textoSobreMim: string;
+    contato: string;
 }
 
-const Home: NextPage<Props> = ({ projetos, textoSobreMim }) => {
+const Home: NextPage<Props> = ({ projetos, contato }) => {
     return (
         <div className={styles.container}>
             <Head>
-                <title>Portifólio - Roberto Guedes</title>
-                <meta name="description" content="Portifólio" />
+                <title>Roberto Guedes</title>
+                <meta name="description" content="Portfólio - Roberto Guedes" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <div className={styles.sobreMim}>
-                <h1>Sobre mim:</h1>
+                <h1>Contato:</h1>
                 <div className={`${styles.caixa} ${styles.fadeIn}`}>
-                    <div 
-                        dangerouslySetInnerHTML={{ __html: textoSobreMim }} 
-                        className={styles.texto}
-                    />
-                    <div className={styles.contato}>
-                        <p>
-                            Contato: <a href="mailto:robertoguedesn@gmail.com">robertoguedesn@gmail.com</a>
-                        </p>
-                        <p>
-                            Meu GitHub: <a href="https://github.com/roberto-ng">https://github.com/roberto-ng</a>
-                        </p>
+                    <div className={styles.contato}
+                        dangerouslySetInnerHTML={{ __html: contato }}
+                    >
                     </div>
                 </div>
             </div>
@@ -70,6 +62,19 @@ const Home: NextPage<Props> = ({ projetos, textoSobreMim }) => {
                                             rel="noreferrer"
                                         >
                                             Abrir site
+                                        </a>
+                                    </div>
+                                )}
+
+                                {(projeto.download_link != null) && (
+                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                        <a 
+                                            href={projeto.download_link} 
+                                            className={styles.link}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Baixar
                                         </a>
                                     </div>
                                 )}
@@ -117,15 +122,15 @@ const Home: NextPage<Props> = ({ projetos, textoSobreMim }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const [projetos, textoSobreMim] = await Promise.all([
+    const [projetos, contato] = await Promise.all([
         buscarProjetos(), 
-        getTexto('sobre-mim'),
+        getTexto('contato'),
     ]);
 
     return {
         props: {
             projetos,
-            textoSobreMim,
+            contato,
         },
     };
 };
