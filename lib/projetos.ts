@@ -12,7 +12,7 @@ export interface Projeto {
     plataformas: string[];
 }
 
-const pastaProjetos = path.join(process.cwd(), 'projetos');
+const pastaProjetos = path.join(process.cwd(), 'data/projetos');
 
 function lerDados(arquivo: string): Projeto {
     const dados = YAML.parse(arquivo);

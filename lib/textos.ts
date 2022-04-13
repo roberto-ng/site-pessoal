@@ -3,7 +3,7 @@ import fs from 'fs/promises'
 import { remark } from 'remark'
 import html from 'remark-html'
 
-const pastaTextos = path.join(process.cwd(), 'textos');
+const pastaTextos = path.join(process.cwd(), 'data/textos');
 
 export async function getTexto(id: string) {
     const caminho = path.join(pastaTextos, `${id}.md`);
