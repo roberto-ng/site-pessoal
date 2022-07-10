@@ -33,6 +33,9 @@ export function getTexto(tag: string): string | null {
         case 'strapi':
             return 'Strapi CMS';
 
+        case 'netlify-cms':
+            return 'Netlify CMS';
+
         default:
             return null;
     }

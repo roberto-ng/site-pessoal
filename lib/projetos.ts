@@ -4,7 +4,7 @@ import YAML from 'yaml'
 
 export type Projeto = {
     titulo: string;
-    repo: string;
+    repo: string | null;
     descricao: string;
     thumbnail: string | null;
     link: string | null;
@@ -20,7 +20,7 @@ function lerDados(arquivo: string): Projeto {
 
     return {
         titulo: dados.titulo ?? '',
-        repo: dados.repo ?? '',
+        repo: dados.repo ?? null,
         descricao: dados.descricao ?? '',
         thumbnail: dados.thumbnail ?? null,
         link: dados.link ?? null,

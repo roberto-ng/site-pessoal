@@ -35,8 +35,8 @@ const Home: NextPage<Props> = ({ projetos, contato }) => {
             </h1>
 
             <div className={styles.grid}>
-                {projetos.map(projeto => (
-                    <div key={projeto.repo} className={`${styles.cardProjeto} ${styles.fadeIn}`}>
+                {projetos.map((projeto, i) => (
+                    <div key={i} className={`${styles.cardProjeto} ${styles.fadeIn}`}>
                         <div 
                             className={styles.thumb}
                             style={{ backgroundImage: `url("${projeto.thumbnail}")` }}
@@ -79,16 +79,18 @@ const Home: NextPage<Props> = ({ projetos, contato }) => {
                                     </div>
                                 )}
 
-                                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    <a 
-                                        href={`https://github.com/roberto-ng/${projeto.repo}`}
-                                        className={styles.link} 
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        Repositório
-                                    </a>
-                                </div>
+                                {(projeto.repo != null) && (
+                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                        <a 
+                                            href={`https://github.com/roberto-ng/${projeto.repo}`}
+                                            className={styles.link} 
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Repositório
+                                        </a>
+                                    </div>
+                                )}
 
                             </div>
 
