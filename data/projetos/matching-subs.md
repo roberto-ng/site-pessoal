@@ -1,10 +1,12 @@
+---
 titulo: 'Matching Subs'
 descricao: 'Protótipo de uma plataforma de compartilhamento de legendas'
 thumbnail: '/res/projetos/matching_subs.webp'
 link: 'https://matching-subs.netlify.app/pt'
 tags:
-  - 'javascript'
-  - 'next'
-  - 'netlify-cms'
+  - 'JavaScript'
+  - 'Next.js'
+  - 'Netlify CMS'
 plataformas:
   - 'Web'
+---

@@ -1,9 +1,11 @@
+---
 titulo: 'Nesbrasa'
 repo: 'nesbrasa-gtk'
 descricao: 'Emulador de NES para Windows e Linux.'
 thumbnail: '/res/projetos/nesbrasa-thumb.webp'
 tags:
-  - 'c++'
-  - 'gtk'
+  - 'C++'
+  - 'GTK'
 plataformas:
   - 'Desktop'
+---

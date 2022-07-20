@@ -1,0 +1,222 @@
+---
+import type { Projeto } from '../../lib/projeto';
+
+export interface Props {
+	projeto: Projeto
+}
+
+const projeto: Projeto = Astro.props.projeto;
+---
+
+<div class="cardProjeto fadeIn">
+	<div 
+		class="thumb"
+		style={`background-image: url('${projeto.thumbnail}')`}
+	>
+	</div>
+
+	<div class="cardProjetoDetalhes">
+		<p class="titulo">
+			{projeto.titulo}
+		</p>
+
+		<p class="descricao">
+			{projeto.descricao}
+		</p>
+
+		<div class="links">
+			{(projeto.link != null) && (
+				<div class="button">
+					<a 
+						href={projeto.link} 
+						class="link"
+						target="_blank"
+						rel="noreferrer"
+					>
+						Abrir site
+					</a>
+				</div>
+			)}
+
+			{(projeto.download_link != null) && (
+				<div class="button">
+					<a 
+						href={projeto.download_link} 
+						class="link"
+						target="_blank"
+						rel="noreferrer"
+					>
+						Baixar
+					</a>
+				</div>
+			)}
+
+			{(projeto.repo != null) && (
+				<div class="button">
+					<a 
+						href={`https://github.com/roberto-ng/${projeto.repo}`}
+						class="link"
+						target="_blank"
+						rel="noreferrer"
+					>
+						Repositório
+					</a>
+				</div>
+			)}
+
+		</div>
+
+		<div class="subtitulo">
+			<p>Feito com: </p>
+			<div class="tags">
+				{projeto.tags?.map(tag => (
+					<div class="tag">
+						<p>{tag}</p>
+					</div>
+				))}
+			</div>
+		</div>
+
+		<div class="subtitulo">
+			<p>Disponível para: </p>
+			<div class="tags">
+				{projeto.plataformas?.map(plataforma => (
+					<div class="tag">
+						<p>{plataforma}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</div>
+
+<style lang="scss">
+	@keyframes fadeIn {
+		0% { 
+			opacity: 0; 
+		}
+		100% { 
+			opacity: 1; 
+		}
+	} 
+
+	.fadeIn {
+		animation-name: fadeIn;
+		animation-duration: 1s;
+	}
+
+	.cardProjeto {
+		color: #313338;
+		width: 300px;
+		min-height: 430px;
+		margin: 10px;
+		background-color: white;
+		border: none;
+		border-radius: 4px;
+		box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+		transition: all 0.3s ease 0s;
+		text-align: center;
+	}
+
+	.cardProjeto .titulo {
+		text-align: center;
+		font-size: 1.2rem;
+		margin-top: 0px;
+	}
+
+	.cardProjeto .descricao {
+		text-align: center;
+	}
+
+	.cardProjeto .thumb {
+		width: 300px;
+		height: 180px;
+		background-position: center center;
+		background-size: cover;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0px 8px 0px;
+	}
+
+	.cardProjeto p {
+		margin: 0;
+	}
+
+	.cardProjetoDetalhes {
+		padding: 10px;
+		padding-top: 0px;
+	}
+
+	.cardProjeto .links {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.cardProjeto .subtitulo {
+		text-align: center;
+		font-size: large;
+	}
+
+	.tags {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		white-space: nowrap;
+	}
+
+	.tag {
+		margin: 5px;
+		background-color: #313338;
+		color: white;
+		padding: 5px;
+		border-radius: 5px;
+	}
+
+	.tag p {
+		font-size: medium;
+	}
+
+	.link {
+		margin: 5px;
+		width: 100px;
+		padding: 9px;
+		border: 1px solid #313338;
+		color: #313338;
+		border-radius: 5px;
+		transition: all 0.3s;
+	}
+
+	.link:hover {
+		background-color: #313338;
+		color: white;
+	}
+
+	.link p {
+		font-size: medium;
+	}
+
+	.button {
+		display: flex; 
+		justify-content: center;
+
+		a {
+			text-decoration: none;
+			box-sizing: border-box;
+		}
+	}
+
+	@media screen and (max-width: 380px) {
+		.cardProjeto {
+			width: 95%;
+			max-width: 95%;
+		}
+
+		.cardProjeto .thumb {
+			width: 95%;
+		}
+	}
+</style>
