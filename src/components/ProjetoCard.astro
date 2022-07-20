@@ -91,20 +91,6 @@ const projeto: Projeto = Astro.props.projeto;
 </div>
 
 <style lang="scss">
-	@keyframes fadeIn {
-		0% { 
-			opacity: 0; 
-		}
-		100% { 
-			opacity: 1; 
-		}
-	} 
-
-	.fadeIn {
-		animation-name: fadeIn;
-		animation-duration: 1s;
-	}
-
 	.cardProjeto {
 		color: #313338;
 		width: 300px;
@@ -118,17 +104,17 @@ const projeto: Projeto = Astro.props.projeto;
 		text-align: center;
 	}
 
-	.cardProjeto .titulo {
+	.titulo {
 		text-align: center;
 		font-size: 1.2rem;
 		margin-top: 0px;
 	}
 
-	.cardProjeto .descricao {
+	.descricao {
 		text-align: center;
 	}
 
-	.cardProjeto .thumb {
+	.thumb {
 		width: 300px;
 		height: 180px;
 		background-position: center center;
@@ -138,7 +124,7 @@ const projeto: Projeto = Astro.props.projeto;
 		box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0px 8px 0px;
 	}
 
-	.cardProjeto p {
+	p {
 		margin: 0;
 	}
 
@@ -147,14 +133,14 @@ const projeto: Projeto = Astro.props.projeto;
 		padding-top: 0px;
 	}
 
-	.cardProjeto .links {
+	.links {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
 	}
 
-	.cardProjeto .subtitulo {
+	.subtitulo {
 		text-align: center;
 		font-size: large;
 	}
@@ -174,10 +160,10 @@ const projeto: Projeto = Astro.props.projeto;
 		color: white;
 		padding: 5px;
 		border-radius: 5px;
-	}
-
-	.tag p {
-		font-size: medium;
+		
+		p {
+			font-size: medium;
+		}
 	}
 
 	.link {
@@ -188,15 +174,15 @@ const projeto: Projeto = Astro.props.projeto;
 		color: #313338;
 		border-radius: 5px;
 		transition: all 0.3s;
-	}
-
-	.link:hover {
-		background-color: #313338;
-		color: white;
-	}
-
-	.link p {
-		font-size: medium;
+		
+		&:hover {
+			background-color: #313338;
+			color: white;
+		}
+		
+		p {
+			font-size: medium;
+		}
 	}
 
 	.button {
@@ -215,8 +201,8 @@ const projeto: Projeto = Astro.props.projeto;
 			max-width: 95%;
 		}
 
-		.cardProjeto .thumb {
-			width: 95%;
+		.thumb {
+			width: 100%;
 		}
 	}
 </style>

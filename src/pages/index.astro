@@ -31,20 +31,6 @@ const projetos = await Astro.glob<Projeto>('../../data/projetos/*.md');
 </Layout>
 
 <style lang="scss">
-	@keyframes fadeIn {
-		0% { 
-			opacity: 0; 
-		}
-		100% { 
-			opacity: 1; 
-		}
-	} 
-
-	.fadeIn {
-		animation-name: fadeIn;
-		animation-duration: 1s;
-	}
-
 	.sectionTitle {
 		text-align: center;
 	}
@@ -58,41 +44,41 @@ const projetos = await Astro.glob<Projeto>('../../data/projetos/*.md');
 		margin-bottom: 20px;
 
 		color: #313338;
+		
+		.caixa {
+			padding: 20px;
+			max-width: 800px;
+			margin-left: 20px;
+			margin-right: 20px;
+			background-color: white;
+			border: none;
+			border-radius: 4px;
+			box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+			transition: all 0.3s ease 0s;
+		}
+		
+		.texto {
+			font-size: large;
+			text-align: justify;
+		}
+	
+		.texto p:first-child {
+			margin: 0px;
+		}
+
+		ul {
+			margin: 2px;
+		}
+		
+		.contato {
+			font-size: large;
+		}
 	}
 
 	h1 {
 		font-family: 'Suez One', serif;
 		font-size: 27px;
 		margin: 0;
-	}
-
-	.sobreMim .caixa {
-		padding: 20px;
-		max-width: 800px;
-		margin-left: 20px;
-		margin-right: 20px;
-		background-color: white;
-		border: none;
-		border-radius: 4px;
-		box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-		transition: all 0.3s ease 0s;
-	}
-
-	.sobreMim .texto {
-		font-size: large;
-		text-align: justify;
-	}
-
-	.sobreMim .texto p:first-child {
-		margin: 0px;
-	}
-
-	.sobreMim ul {
-		margin: 2px;
-	}
-
-	.sobreMim .contato {
-		font-size: large;
 	}
 
 	.grid {
@@ -107,18 +93,20 @@ const projetos = await Astro.glob<Projeto>('../../data/projetos/*.md');
 			grid-template-columns: none;
 		}
 
-		.sobreMim .caixa{
-			padding: 11px;
-			margin-left: 1px;
-			margin-right: 1px;
-		}
-
-		.sobreMim .texto {
-			text-align: left;
-		}
-
-		.sobreMim p {
-			font-size: 16px;
+		.sobreMim {
+			.caixa {
+				padding: 11px;
+				margin-left: 1px;
+				margin-right: 1px;
+			}
+			
+			.texto {
+				text-align: left;
+			}
+			
+			p {
+				font-size: 16px;
+			}
 		}
 	}
 </style>

@@ -85,4 +85,18 @@ const { title } = Astro.props as Props;
 	body {
 		background-color: ghostwhite;
 	}
+
+	@keyframes fadeIn {
+		0% { 
+			opacity: 0; 
+		}
+		100% { 
+			opacity: 1; 
+		}
+	} 
+
+	.fadeIn {
+		animation-name: fadeIn;
+		animation-duration: 1s;
+	}
 </style>
