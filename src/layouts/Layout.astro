@@ -16,6 +16,11 @@ const { title } = Astro.props as Props;
 
 		<title>{title}</title>
 
+		{/* @ts-ignore */}
+		{(import.meta.env.MODE === 'production') && (
+			<script async defer data-website-id="951d26d0-e3e2-4aae-9505-fb7e2812879b" src="https://umami-production-2990.up.railway.app/umami.js"></script>
+		)}
+
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Suez+One&display=swap">
 		</GoogleFontsOptimizer>
 	</head>
