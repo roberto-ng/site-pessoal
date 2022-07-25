@@ -1,4 +1,6 @@
 ---
+import { GoogleFontsOptimizer } from 'astro-google-fonts-optimizer';
+
 export interface Props {
 	title: string;
 }
@@ -14,19 +16,8 @@ const { title } = Astro.props as Props;
 
 		<title>{title}</title>
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet" /> 
-
-		<!-- Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y5CF81WD3T" is:inline></script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'G-Y5CF81WD3T');
-		</script>
+		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Suez+One&display=swap">
+		</GoogleFontsOptimizer>
 	</head>
 
 	<body>
