@@ -9,8 +9,10 @@ const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
 
 <Layout title="Roberto Guedes">
 	<main>
+		<h1 class="sectionTitle">
+			Contato:
+		</h1>
 		<div class="sobreMim">
-			<h1 class="sectionTitle">Contato:</h1>
 			<div class="caixa fadeIn">
 				<div class="contato">
 					<TextoContato />
@@ -21,7 +23,6 @@ const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
 		<h1 class="sectionTitle">
 			Portfólio:
 		</h1>
-
 		<div class="grid">
 			{projetos.map((item) => (
 				<ProjetoCard projeto={item.frontmatter} />
@@ -40,7 +41,6 @@ const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
 		flex-direction: column;
 		align-items: center;
 
-		margin-top: 100px;
 		margin-bottom: 20px;
 
 		color: #313338;
@@ -85,7 +85,7 @@ const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 		justify-items: center;
-		gap: 10px;
+		gap: 15px;
 	}
 
 	@media screen and (max-width: 380px) {
