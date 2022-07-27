@@ -74,6 +74,8 @@ const { projeto } = Astro.props as Props;
 </div>
 
 <style lang="scss">
+	$tag-border-color: #313338;
+
 	.cardProjeto {
 		color: #313338;
 		width: 300px;
@@ -137,11 +139,12 @@ const { projeto } = Astro.props as Props;
 	}
 
 	.tag {
+		color: $tag-border-color;
+		border: 1px solid $tag-border-color;
+		border-radius: 3px;
+
 		margin: 5px;
-		background-color: #313338;
-		color: white;
 		padding: 5px;
-		border-radius: 5px;
 		
 		p {
 			font-size: medium;
