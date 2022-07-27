@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ProjetoCard from '../components/ProjetoCard.astro';
-import { Content as TextoContato } from '../../data/textos/contato.md';
-import type { Projeto } from '../../lib/projeto';
+import Layout from '@/src/layouts/Layout.astro';
+import ProjetoCard from '@/src/components/ProjetoCard.astro';
+import { Content as TextoContato } from '@/data/textos/contato.md';
+import type { Projeto } from '@/src/lib/projeto';
 
-const projetos = await Astro.glob<Projeto>('../../data/projetos/*.md');
+const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
 ---
 
 <Layout title="Roberto Guedes">

@@ -10,6 +10,11 @@
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
     // Add type definitions for our Astro runtime.
-    "types": ["astro/client", "vite/client"]
+    "types": ["astro/client", "vite/client"],
+    // Configure for path alias
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
   }
 }
