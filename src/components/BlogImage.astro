@@ -1,0 +1,36 @@
+---
+export type Props = {
+    src: string,
+    caption?: string,
+    width?: string,
+    height?: string,
+};
+
+const props = Astro.props as Props;
+---
+
+<div class="image-wrapper">
+    <img 
+        src={props.src} 
+        width={props.width}
+        height={props.height}
+        alt={props.caption}
+    />
+
+    {(props.caption) && (
+        <small>{props.caption}</small>
+    )}
+</div>
+
+<style lang="scss">
+    .image-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img {
+        max-width: 100vw;
+    }
+</style>

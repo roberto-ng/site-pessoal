@@ -2,7 +2,7 @@
 titulo: 'Clima'
 repo: 'weather'
 descricao: 'App de previsão meteorológica em tempo real.'
-thumbnail: '/res/projetos/weather.webp'
+thumbnail: '/assets/projetos/weather.webp'
 tags:
   - 'JavaScript'
   - 'Angular'

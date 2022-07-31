@@ -1,0 +1,41 @@
+---
+title: 'Criando apps para Desktop com Tauri'
+date: '2022-07-31'
+---
+import BlogImage from '@/src/components/BlogImage.astro'
+
+Electron é talvez o framework de aplicações para desktop mais popular da atualidade, porém apesar da sua praticidade ele tem um uso de recursos do computador muito alto. Isso acontece porque o Electron incorpora o Chromium separadamente em cada nova aplicação, o que faz com que dois programas diferentes não possam compartilhar a mesma instância do Chromium.
+
+O Tauri é um novo framework que também permite que desenvolvedores criem aplicações multiplataforma para desktop usando tecnologias da Web, mas, ao contrário do Electron, que incorpora o Chromium separadamente em cada nova aplicação, o Tauri usa a WebView nativa de cada sistema operacional, resultando em aplicações menores e que usam menos RAM.
+
+### Utilização
+
+Para criar um projeto com o Tauri, basta ter o NPM instalado e executar o seguinte comando no terminal:
+
+```bash
+npm create tauri-app
+```
+
+A CLI do Tauri fará várias perguntas, incluindo qual bibliotecas você deseja usar.
+
+<BlogImage 
+    src="/assets/posts/tauri-cli.png" 
+    width="500px"
+/>
+
+Para testar esse novo framework, decidi fazer um programa simples que usa a MET Norway Weather API para mostrar a temperatura em diversas cidades. A aplicação usa apenas 45 MB de memória RAM e o executável pesa 13 MB.
+
+<BlogImage
+    src="/assets/posts/weather-app.png"
+/>
+
+### Vantagens
+
+* Menor uso de RAM.
+* A CLI configura o projeto e as bibliotecas escolhidas pelo usuário automáticamente.
+* Fácilidade de interagir com código nativo escrito em Rust.
+
+### Desvantagens
+
+* Ecossistema pequeno e imaturo.
+* Como o Tauri usa uma WebView diferente em cada plataforma, é necessário manter a aplicação compatível com todos esses navegadores.

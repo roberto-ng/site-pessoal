@@ -1,0 +1,101 @@
+---
+import path from 'path';
+import Layout from '@/src/layouts/Layout.astro';
+import type { Post } from '@/src/lib/post';
+import '@/src/styles/blog.css';
+
+export interface Props {
+    post: Record<string, any>,
+    PostContent: any,
+}
+
+export async function getStaticPaths() {
+    const langs = ['pt-br'];
+    const posts = await Astro.glob('@/data/posts/*.mdx');
+
+    return posts
+        .flatMap(post => {
+            return langs.map(lang => {
+                // O id do post é o nome do arquivo sem a sua extensão
+                const id = path.parse(post.file).name;
+
+                return {
+                    params: {
+                        id,
+                        lang,
+                    },
+                    props: {
+                        post,
+                        PostContent: post.default,
+                    },
+                };
+            });
+        });
+}
+
+function isDateValid(date: Date): boolean {
+    return !isNaN(date.getTime());
+}
+
+const { post, PostContent } = Astro.props as Props;
+const postData = post.frontmatter as Post;
+
+const date = new Date(postData.date + ' EDT');
+if (!isDateValid(date)) {
+    const file = path.parse(post.file).base;
+    throw new Error(`Data do post '${file}' inválida: ${postData.date}`);
+}
+---
+
+<Layout title={`Roberto Guedes - ${postData.title}`}>
+    <article class="wrapper content">
+        <header>
+            <h1 class="title">{postData.title}</h1>
+            <time date-time={postData.date}>
+                Postado em: {date.toLocaleDateString('pt-BR')}
+            </time>
+        </header>
+
+        <main>
+            <PostContent />
+        </main>
+    </article>
+</Layout>
+
+<style>
+    img {
+        width: 100vw;
+        object-fit: cover;
+        object-position: center;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        max-width: 1280px;
+    }
+
+    @media (max-width: 50em) {
+        img {
+            height: 260px;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .content {
+        margin-bottom: 8rem;
+    }
+
+    .content :global(h2) {
+        margin-top: 4rem;
+    }
+
+    .title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    time {
+        margin: 0;
+        color: var(--theme-text-lighter);
+    }
+</style>
