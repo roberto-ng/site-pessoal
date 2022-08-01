@@ -1,0 +1,55 @@
+---
+import path from 'path';
+import { isDateValid, Post } from "../lib/post";
+
+export type Props = {
+    post: Post,
+    file: string,
+};
+
+const { post, file } = Astro.props as Props;
+const id = path.parse(file).name;
+
+const date = new Date(post.date + ' EDT');
+if (!isDateValid(date)) {
+    throw new Error(`Data do post '${id}' inválida: ${post.date}`);
+}
+---
+
+<div class="card">
+    <a href={`/pt-br/posts/${id}`}>
+        {post.title}
+    </a>
+
+    <time date-time={post.date}>
+        Postado em: {date.toLocaleDateString('pt-BR')}
+    </time>
+</div>
+
+<style>
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        max-width: 500px;
+        background-color: white;
+        box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+        border-radius: 4px;
+
+        padding: 20px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    time {
+        margin: 0;
+        color: #4b5563;
+    }
+</style>

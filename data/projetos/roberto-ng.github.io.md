@@ -5,7 +5,7 @@ descricao: 'O site que você está vendo agora.'
 thumbnail: '/assets/projetos/portfolio-thumb.webp'
 tags:
   - 'JavaScript'
-  - 'React'
+  - 'Node.js'
   - 'Astro.build'
 plataformas:
   - 'Web'

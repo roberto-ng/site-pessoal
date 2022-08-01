@@ -2,5 +2,8 @@ export type Post = {
     title: string,
     lang: string,
     date: string,  
-    draft: true,
 };
+
+export function isDateValid(date: Date): boolean {
+    return !isNaN(date.getTime());
+}

@@ -1,7 +1,7 @@
 ---
 import path from 'path';
 import Layout from '@/src/layouts/Layout.astro';
-import type { Post } from '@/src/lib/post';
+import { isDateValid, Post } from '@/src/lib/post';
 import '@/src/styles/blog.css';
 
 export interface Props {
@@ -33,10 +33,6 @@ export async function getStaticPaths() {
         });
 }
 
-function isDateValid(date: Date): boolean {
-    return !isNaN(date.getTime());
-}
-
 const { post, PostContent } = Astro.props as Props;
 const postData = post.frontmatter as Post;
 
@@ -59,6 +55,8 @@ if (!isDateValid(date)) {
         <main>
             <PostContent />
         </main>
+
+        <a href="/">Voltar para a Home</a>
     </article>
 </Layout>
 

@@ -1,10 +1,12 @@
 ---
 import Layout from '@/src/layouts/Layout.astro';
 import ProjetoCard from '@/src/components/ProjetoCard.astro';
+import PostCard from '../components/PostCard.astro';
 import { Content as TextoContato } from '@/data/textos/contato.md';
 import type { Projeto } from '@/src/lib/projeto';
 
 const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
+const posts = await Astro.glob('@/data/posts/*.mdx');
 ---
 
 <Layout title="Roberto Guedes">
@@ -26,6 +28,15 @@ const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
 		<div class="grid">
 			{projetos.map((item) => (
 				<ProjetoCard projeto={item.frontmatter} />
+			))}
+		</div>
+
+		<h1 class="sectionTitle">
+			Blog:
+		</h1>
+		<div id="posts">
+			{posts.map(post => (
+				<PostCard post={post.frontmatter} file={post.file} />
 			))}
 		</div>
 	</main>
@@ -87,6 +98,15 @@ const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
 		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 		justify-items: center;
 		gap: 15px;
+		margin-bottom: 20px;
+	}
+
+	#posts {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		margin-bottom: 20px;
 	}
 
 	@media screen and (max-width: 380px) {

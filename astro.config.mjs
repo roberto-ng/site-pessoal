@@ -8,12 +8,7 @@ const rootDir = dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [partytown({
-    config: {
-      // Adds dataLayer.push as a forwarding-event.
-      forward: ["dataLayer.push"]
-    }
-  }), mdx()],
+  integrations: [mdx()],
   vite: {
     resolve: {
       alias: {
