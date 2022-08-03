@@ -26,7 +26,9 @@ const { title } = Astro.props as Props;
 
 	<body>
 		<header id="header">
-			<h1>Roberto Guedes</h1>
+			<a href="/" class="logo">
+				<h1>Roberto Guedes</h1>
+			</a>
 		</header>
 
 		<div id="content">
@@ -57,6 +59,10 @@ const { title } = Astro.props as Props;
 		box-shadow: rgb(167, 167, 167) 0px 0px 5px 0.5px;
 		
 		font-family: 'Suez One', serif;
+
+		a.logo {
+			text-decoration: none;
+		}
 
 		h1 {
 			margin: 0;
