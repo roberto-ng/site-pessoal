@@ -1,9 +1,10 @@
 ---
 import type { Projeto } from '@/src/lib/projeto';
+import { CollectionEntry } from 'astro:content';
 import CardLinkButton from './CardLinkButton.astro';
 
 export interface Props {
-	projeto: Projeto
+	projeto: CollectionEntry<'projeto'>,
 }
 
 const { projeto } = Astro.props as Props;
@@ -12,37 +13,37 @@ const { projeto } = Astro.props as Props;
 <div class="cardProjeto fadeIn">
 	<div 
 		class="thumb"
-		style={`background-image: url('${projeto.thumbnail}')`}
+		style={`background-image: url('${projeto.data.thumbnail ?? ''}')`}
 	>
 	</div>
 
 	<div class="cardProjetoDetalhes">
 		<p class="titulo">
-			{projeto.titulo}
+			{projeto.data.titulo}
 		</p>
 
 		<p class="descricao">
-			{projeto.descricao}
+			{projeto.data.descricao}
 		</p>
 
 		<div class="links">
-			{(projeto.link != null) && (
+			{(projeto.data.link != null) && (
 				<CardLinkButton 
-					href={projeto.link} 
+					href={projeto.data.link} 
 					text="Abrir site"
 				/>
 			)}
 
-			{(projeto.download_link != null) && (
+			{(projeto.data.download_link != null) && (
 				<CardLinkButton 
-					href={projeto.download_link} 
+					href={projeto.data.download_link} 
 					text="Baixar"
 				/>
 			)}
 
-			{(projeto.repo != null) && (
+			{(projeto.data.repo != null) && (
 				<CardLinkButton 
-					href={`https://github.com/roberto-ng/${projeto.repo}`}
+					href={`https://github.com/roberto-ng/${projeto.data.repo}`}
 					text="Repositório"
 				/>
 			)}
@@ -52,7 +53,7 @@ const { projeto } = Astro.props as Props;
 		<div class="subtitulo">
 			<p>Feito com: </p>
 			<div class="tags">
-				{projeto.tags?.map(tag => (
+				{projeto.data.tags?.map(tag => (
 					<div class="tag">
 						<p>{tag}</p>
 					</div>
@@ -63,7 +64,7 @@ const { projeto } = Astro.props as Props;
 		<div class="subtitulo">
 			<p>Disponível para: </p>
 			<div class="tags">
-				{projeto.plataformas?.map(plataforma => (
+				{projeto.data.plataformas?.map(plataforma => (
 					<div class="tag">
 						<p>{plataforma}</p>
 					</div>

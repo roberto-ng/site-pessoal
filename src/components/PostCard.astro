@@ -1,27 +1,28 @@
 ---
 import path from 'path';
+import { CollectionEntry } from 'astro:content';
 import { isDateValid, Post } from "../lib/post";
 
 export type Props = {
-    post: Post,
+    post: CollectionEntry<'post'>,
     file: string,
 };
 
 const { post, file } = Astro.props as Props;
 const id = path.parse(file).name;
 
-const date = new Date(post.date + ' EDT');
+const date = new Date(post.data.date + ' EDT');
 if (!isDateValid(date)) {
-    throw new Error(`Data do post '${id}' inválida: ${post.date}`);
+    throw new Error(`Data do post '${id}' inválida: ${post.data.date}`);
 }
 ---
 
 <div class="card">
     <a href={`/pt-br/posts/${id}`}>
-        {post.title}
+        {post.data.title}
     </a>
 
-    <time date-time={post.date}>
+    <time date-time={post.data.date}>
         Postado em: {date.toLocaleDateString('pt-BR')}
     </time>
 </div>

@@ -29,7 +29,7 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 		</h1>
 		<div class="grid">
 			{projetos.map((item) => (
-				<ProjetoCard projeto={item.data} />
+				<ProjetoCard projeto={item} />
 			))}
 		</div>
 
@@ -38,7 +38,7 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 		</h1>
 		<div id="posts">
 			{posts.map(post => (
-				<PostCard post={post.data} file={post.slug} />
+				<PostCard post={post} file={post.slug} />
 			))}
 		</div>
 	</main>
