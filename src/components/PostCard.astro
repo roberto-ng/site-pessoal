@@ -8,7 +8,7 @@ export type Props = {
     file: string,
 };
 
-const { post, file } = Astro.props as Props;
+const { post, file } = Astro.props;
 const id = path.parse(file).name;
 
 const date = new Date(post.data.date + ' EDT');
@@ -17,40 +17,15 @@ if (!isDateValid(date)) {
 }
 ---
 
-<div class="card">
-    <a href={`/pt-br/posts/${id}`}>
+<div class="flex flex-col gap-6 max-w-lg bg-white shadow-lg rounded p-5 mx-1">
+    <a 
+        class="no-underline text-[22px] font-bold"
+        href={`/pt-br/posts/${id}`}
+    >
         {post.data.title}
     </a>
 
-    <time date-time={post.data.date}>
+    <time class="m-0 text-slate-500" date-time={post.data.date}>
         Postado em: {date.toLocaleDateString('pt-BR')}
     </time>
 </div>
-
-<style>
-    .card {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-
-        max-width: 500px;
-        background-color: white;
-        box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-        border-radius: 4px;
-
-        padding: 20px;
-        margin-right: 5px;
-        margin-left: 5px;
-    }
-
-    a {
-        text-decoration: none;
-        font-size: 22px;
-        font-weight: bold;
-    }
-
-    time {
-        margin: 0;
-        color: #4b5563;
-    }
-</style>

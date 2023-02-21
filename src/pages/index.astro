@@ -12,31 +12,31 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 ---
 
 <Layout title="Roberto Nazareth">
-	<main>
-		<h1 class="sectionTitle">
+	<main class="flex flex-col items-center">
+		<h1 class="text-center mb-4">
 			Contato:
 		</h1>
-		<div class="sobreMim">
-			<div class="caixa fadeIn">
-				<div class="contato">
+		<div class="flex flex-col items-center mb-5 text-slate-700">
+			<div class="p-5 max-w-[800px] mx-5 bg-white rounded shadow-md fadeIn">
+				<div class="text-base md:text-lg text-justify">
 					<ContatoTexto />
 				</div>
 			</div>
 		</div>
 
-		<h1 class="sectionTitle">
+		<h1 class="text-center mb-4">
 			Portfólio:
 		</h1>
-		<div class="grid">
+		<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-center justify-center mb-5">
 			{projetos.map((item) => (
 				<ProjetoCard projeto={item} />
 			))}
 		</div>
 
-		<h1 class="sectionTitle">
+		<h1 class="text-center mb-4">
 			Blog:
 		</h1>
-		<div id="posts">
+		<div class="flex flex-col items-center mb-5">
 			{posts.map(post => (
 				<PostCard post={post} file={post.slug} />
 			))}
@@ -45,91 +45,9 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 </Layout>
 
 <style lang="scss">
-	.sectionTitle {
-		text-align: center;
-		margin-bottom: 15px;
-	}
-
-	.sobreMim {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-
-		margin-bottom: 20px;
-
-		color: #313338;
-		
-		.caixa {
-			padding: 20px;
-			max-width: 800px;
-			margin-left: 20px;
-			margin-right: 20px;
-			background-color: white;
-			border: none;
-			border-radius: 4px;
-			box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
-			transition: all 0.3s ease 0s;
-		}
-		
-		.texto {
-			font-size: large;
-			text-align: justify;
-		}
-	
-		.texto p:first-child {
-			margin: 0px;
-		}
-
-		ul {
-			margin: 2px;
-		}
-		
-		.contato {
-			font-size: large;
-		}
-	}
-
 	h1 {
 		font-family: 'Suez One', serif;
 		font-size: 27px;
 		margin: 0;
-	}
-
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-		justify-items: center;
-		gap: 15px;
-		margin-bottom: 20px;
-	}
-
-	#posts {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-
-		margin-bottom: 20px;
-	}
-
-	@media screen and (max-width: 380px) {
-		.grid {
-			grid-template-columns: none;
-		}
-
-		.sobreMim {
-			.caixa {
-				padding: 11px;
-				margin-left: 1px;
-				margin-right: 1px;
-			}
-			
-			.texto {
-				text-align: left;
-			}
-			
-			p {
-				font-size: 16px;
-			}
-		}
 	}
 </style>

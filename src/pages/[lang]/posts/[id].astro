@@ -37,7 +37,7 @@ if (!isDateValid(date)) {
 ---
 
 <Layout title={`Roberto Nazareth - ${post.data.title}`}>
-    <article class="wrapper content">
+    <article class="wrapper page-content">
         <header>
             <h1 class="title">{post.data.title}</h1>
             <time date-time={post.data.date}>
@@ -71,11 +71,11 @@ if (!isDateValid(date)) {
         }
     }
 
-    .content {
+    .page-content {
         margin-bottom: 8rem;
     }
 
-    .content :global(h2) {
+    .page-content :global(h2) {
         margin-top: 4rem;
     }
 
