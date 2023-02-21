@@ -37,7 +37,7 @@ if (!isDateValid(date)) {
 ---
 
 <Layout title={`Roberto Nazareth - ${post.data.title}`}>
-    <article class="wrapper page-content">
+    <article class="wrapper">
         <header>
             <h1 class="title">{post.data.title}</h1>
             <time date-time={post.data.date}>
@@ -45,48 +45,10 @@ if (!isDateValid(date)) {
             </time>
         </header>
 
-        <main>
+        <main class="prose lg:prose-xl">
             <PostContent />
         </main>
 
         <a href="/">Voltar para a Home</a>
     </article>
 </Layout>
-
-<style>
-    img {
-        width: 100vw;
-        object-fit: cover;
-        object-position: center;
-        margin-top: 2rem;
-        margin-bottom: 4rem;
-        max-width: 1280px;
-    }
-
-    @media (max-width: 50em) {
-        img {
-            height: 260px;
-            margin-top: 0;
-            margin-bottom: 2rem;
-        }
-    }
-
-    .page-content {
-        margin-bottom: 8rem;
-    }
-
-    .page-content :global(h2) {
-        margin-top: 4rem;
-    }
-
-    .title {
-        font-size: 2.25rem;
-        font-weight: 700;
-        margin: 0;
-    }
-
-    time {
-        margin: 0;
-        color: var(--theme-text-lighter);
-    }
-</style>
