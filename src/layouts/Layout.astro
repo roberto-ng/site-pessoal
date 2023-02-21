@@ -17,7 +17,11 @@ const { title } = Astro.props as Props;
 		<title>{title}</title>
 
 		{(import.meta.env.MODE === 'production') && (
-			<script async defer data-website-id="951d26d0-e3e2-4aae-9505-fb7e2812879b" src="https://umami-production-2990.up.railway.app/umami.js"></script>
+			<>
+				<!-- Cloudflare Web Analytics -->
+				<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "849f9f6b16524ca094b2eb72a09c0907"}'></script>
+				<!-- End Cloudflare Web Analytics -->
+			</>
 		)}
 
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Suez+One&display=swap">
