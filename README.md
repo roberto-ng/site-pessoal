@@ -1,4 +1,4 @@
-Site feito para mostrar meus projetos. Disponível em [https://roberto-ng.github.io/](https://roberto-ng.github.io/)
+Site feito para mostrar meus projetos. Disponível em [https://robertonazareth.dev/](https://robertonazareth.dev/)
 
 ## Instruções
 
