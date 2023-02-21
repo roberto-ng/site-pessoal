@@ -7,7 +7,7 @@ export interface Props {
 	projeto: CollectionEntry<'projeto'>,
 }
 
-const { projeto } = Astro.props as Props;
+const { projeto } = Astro.props;
 ---
 
 <div class="sm:w-[300px] sm:min-w-[300px] mx-5 text-slate-700 min-h-[430px] bg-white rounded-t-md rounded-b shadow-lg text-center fadeIn">
@@ -75,20 +75,7 @@ const { projeto } = Astro.props as Props;
 </div>
 
 <style lang="scss">
-	$tag-border-color: #313338;
-
 	.thumb {
 		box-shadow: inset rgba(0, 0, 0, 0.2) 0px 0px 8px 0px;
-	}
-
-	@media screen and (max-width: 380px) {
-		.cardProjeto {
-			width: 95%;
-			max-width: 95%;
-		}
-
-		.thumb {
-			width: 100%;
-		}
 	}
 </style>
