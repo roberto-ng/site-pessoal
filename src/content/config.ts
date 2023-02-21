@@ -10,8 +10,9 @@ const postCollection = defineCollection({
 const projetoCollection = defineCollection({
     schema: z.object({
         titulo: z.string(),
-        repo: z.string(),
-        download_link: z.string(),
+        repo: z.string().optional(),
+        download_link: z.string().optional(),
+        link: z.string().optional(),
         descricao: z.string(),
         thumbnail: z.string(),
         tags: z.array(z.string()),
