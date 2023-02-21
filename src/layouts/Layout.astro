@@ -16,13 +16,6 @@ const { title } = Astro.props as Props;
 
 		<title>{title}</title>
 
-		{(import.meta.env.MODE === 'production') && (
-			<>
-				<!-- Cloudflare Web Analytics -->
-				<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "849f9f6b16524ca094b2eb72a09c0907"}'></script>
-				<!-- End Cloudflare Web Analytics -->
-			</>
-		)}
 
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Suez+One&display=swap">
 		</GoogleFontsOptimizer>
@@ -38,6 +31,14 @@ const { title } = Astro.props as Props;
 		<div id="content">
 			<slot />
 		</div>
+
+		{(import.meta.env.MODE === 'production') && (
+			<>
+				<!-- Cloudflare Web Analytics -->
+				<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "849f9f6b16524ca094b2eb72a09c0907"}'></script>
+				<!-- End Cloudflare Web Analytics -->
+			</>
+		)}
 	</body>
 </html>
 
