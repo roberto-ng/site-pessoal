@@ -25,5 +25,6 @@ export default defineConfig({
     shikiConfig: {
       theme: 'dracula-soft'
     }
-  }
+  },
+  site: 'https://robertonazareth.dev/',
 });
