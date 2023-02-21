@@ -4,9 +4,9 @@ import Layout from '@/src/layouts/Layout.astro';
 import ProjetoCard from '@/src/components/ProjetoCard.astro';
 import PostCard from '../components/PostCard.astro';
 
-const projetos = await getCollection('projetos');
-const posts = await getCollection('posts');
-const contatoTexto = await getEntryBySlug('textos', 'contato');
+const projetos = await getCollection('projeto');
+const posts = await getCollection('post');
+const contatoTexto = await getEntryBySlug('texto', 'contato');
 
 const { Content: ContatoTexto } = await contatoTexto.render();
 ---

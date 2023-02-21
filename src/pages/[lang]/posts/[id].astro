@@ -4,14 +4,13 @@ import path from "path";
 import Layout from "@/src/layouts/Layout.astro";
 import { isDateValid, Post } from "@/src/lib/post";
 import "@/src/styles/blog.css";
-import { removerItensRepetidos } from "@/src/lib/utils";
 
 export interface Props {
-    post: CollectionEntry<"posts">;
+    post: CollectionEntry<'post'>;
 }
 
 export async function getStaticPaths() {
-    const posts = await getCollection("posts");
+    const posts = await getCollection('post');
     return posts.map((post) => {
         const [lang, id] = post.slug.split("/");
 
