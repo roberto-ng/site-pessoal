@@ -1,12 +1,14 @@
 ---
+import { getCollection, getEntryBySlug } from 'astro:content';
 import Layout from '@/src/layouts/Layout.astro';
 import ProjetoCard from '@/src/components/ProjetoCard.astro';
 import PostCard from '../components/PostCard.astro';
-import { Content as TextoContato } from '@/data/textos/contato.md';
-import type { Projeto } from '@/src/lib/projeto';
 
-const projetos = await Astro.glob<Projeto>('@/data/projetos/*.md');
-const posts = await Astro.glob('@/data/posts/*.mdx');
+const projetos = await getCollection('projetos');
+const posts = await getCollection('posts');
+const contatoTexto = await getEntryBySlug('textos', 'contato');
+
+const { Content: ContatoTexto } = await contatoTexto.render();
 ---
 
 <Layout title="Roberto Nazareth">
@@ -17,7 +19,7 @@ const posts = await Astro.glob('@/data/posts/*.mdx');
 		<div class="sobreMim">
 			<div class="caixa fadeIn">
 				<div class="contato">
-					<TextoContato />
+					<ContatoTexto />
 				</div>
 			</div>
 		</div>
@@ -27,7 +29,7 @@ const posts = await Astro.glob('@/data/posts/*.mdx');
 		</h1>
 		<div class="grid">
 			{projetos.map((item) => (
-				<ProjetoCard projeto={item.frontmatter} />
+				<ProjetoCard projeto={item.data} />
 			))}
 		</div>
 
@@ -36,7 +38,7 @@ const posts = await Astro.glob('@/data/posts/*.mdx');
 		</h1>
 		<div id="posts">
 			{posts.map(post => (
-				<PostCard post={post.frontmatter} file={post.file} />
+				<PostCard post={post.data} file={post.slug} />
 			))}
 		</div>
 	</main>

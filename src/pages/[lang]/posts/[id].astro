@@ -1,23 +1,23 @@
 ---
+import { CollectionEntry, getCollection, getEntryBySlug } from 'astro:content';
 import path from 'path';
 import Layout from '@/src/layouts/Layout.astro';
 import { isDateValid, Post } from '@/src/lib/post';
 import '@/src/styles/blog.css';
 
 export interface Props {
-    post: Record<string, any>,
-    PostContent: any,
+    post: CollectionEntry<'posts'>,
 }
 
 export async function getStaticPaths() {
     const langs = ['pt-br'];
-    const posts = await Astro.glob('@/data/posts/*.mdx');
+    const posts = await getCollection('posts');
 
     return posts
         .flatMap(post => {
-            return langs.map(lang => {
+            return langs.map((lang) => {
                 // O id do post é o nome do arquivo sem a sua extensão
-                const id = path.parse(post.file).name;
+                const id = path.parse(post.slug).name;
 
                 return {
                     params: {
@@ -26,28 +26,27 @@ export async function getStaticPaths() {
                     },
                     props: {
                         post,
-                        PostContent: post.default,
                     },
                 };
             });
         });
 }
 
-const { post, PostContent } = Astro.props as Props;
-const postData = post.frontmatter as Post;
+const { post } = Astro.props as Props;
+const { Content: PostContent } = await post.render();
 
-const date = new Date(postData.date + ' EDT');
+const date = new Date(post.data.date + ' EDT');
 if (!isDateValid(date)) {
-    const file = path.parse(post.file).base;
-    throw new Error(`Data do post '${file}' inválida: ${postData.date}`);
+    const file = path.parse(post.slug).base;
+    throw new Error(`Data do post '${file}' inválida: ${post.data.date}`);
 }
 ---
 
-<Layout title={`Roberto Nazareth - ${postData.title}`}>
+<Layout title={`Roberto Nazareth - ${post.data.title}`}>
     <article class="wrapper content">
         <header>
-            <h1 class="title">{postData.title}</h1>
-            <time date-time={postData.date}>
+            <h1 class="title">{post.data.title}</h1>
+            <time date-time={post.data.date}>
                 Postado em: {date.toLocaleDateString('pt-BR')}
             </time>
         </header>
