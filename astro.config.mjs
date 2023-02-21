@@ -3,12 +3,14 @@ import partytown from "@astrojs/partytown";
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import mdx from "@astrojs/mdx";
+import tailwind from "@astrojs/tailwind";
 const rootDir = dirname(fileURLToPath(import.meta.url));
 
+// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx()],
+  integrations: [mdx(), tailwind()],
   vite: {
     resolve: {
       alias: {
@@ -26,5 +28,5 @@ export default defineConfig({
       theme: 'dracula-soft'
     }
   },
-  site: 'https://robertonazareth.dev/',
+  site: 'https://robertonazareth.dev/'
 });
