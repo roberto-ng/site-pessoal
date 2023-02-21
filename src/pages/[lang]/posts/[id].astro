@@ -3,7 +3,6 @@ import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content";
 import path from "path";
 import Layout from "@/src/layouts/Layout.astro";
 import { isDateValid, Post } from "@/src/lib/post";
-import "@/src/styles/blog.css";
 
 export interface Props {
     post: CollectionEntry<'post'>;
@@ -37,18 +36,22 @@ if (!isDateValid(date)) {
 ---
 
 <Layout title={`Roberto Nazareth - ${post.data.title}`}>
-    <article class="wrapper">
+    <article class="mx-auto px-8 pb-5 w-full max-w-[70ch]">
         <header>
-            <h1 class="title">{post.data.title}</h1>
-            <time date-time={post.data.date}>
+            <h1 class="mb-2 text-4xl font-bold text-zinc-900 dark:text-white">
+                {post.data.title}
+            </h1>
+            <time class="m-0 text-slate-500 dark:text-zinc-400" date-time={post.data.date}>
                 Postado em: {date.toLocaleDateString("pt-BR")}
             </time>
         </header>
 
-        <main class="prose lg:prose-xl">
+        <main class="my-5 prose lg:prose-lg dark:prose-invert">
             <PostContent />
         </main>
 
-        <a href="/">Voltar para a Home</a>
+        <a class="text-slate-500 dark:text-zinc-400 text-xl" href="/">
+            Voltar para a Home
+        </a>
     </article>
 </Layout>

@@ -10,7 +10,10 @@ export interface Props {
 const { projeto } = Astro.props;
 ---
 
-<div class="sm:w-[300px] sm:min-w-[300px] mx-5 text-slate-700 min-h-[430px] bg-white rounded-t-md rounded-b shadow-lg text-center fadeIn">
+<div 
+	class="sm:w-[300px] sm:min-w-[300px] mx-5 text-slate-700 dark:text-white min-h-[430px] bg-white dark:bg-zinc-800
+		   rounded-t-md rounded-b shadow-lg dark:shadow-xl text-center fadeIn"
+>
 	<div 
 		class=" h-[180px] bg-center bg-cover rounded-t-md thumb "
 		style={`background-image: url('${projeto.data.thumbnail ?? ''}')`}
@@ -54,8 +57,8 @@ const { projeto } = Astro.props;
 			<p>Feito com: </p>
 			<div class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap">
 				{projeto.data.tags?.map(tag => (
-					<div class="text-slate-700 border-[1px] border-slate-700 rounded-sm m-1 p-1">
-						<p class="font-medium m-0">{tag}</p>
+					<div class="border-[1px] text-gray-800 dark:text-white border-gray-800 dark:border-white rounded-sm m-1 p-1">
+						<p class="text-base m-0">{tag}</p>
 					</div>
 				))}
 			</div>
@@ -65,8 +68,8 @@ const { projeto } = Astro.props;
 			<p>Disponível para: </p>
 			<div class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap">
 				{projeto.data.plataformas?.map(plataforma => (
-					<div class="text-slate-700 border-[1px] border-slate-700 rounded-sm m-1 p-1">
-						<p class="font-medium m-0">{plataforma}</p>
+					<div class="border-[1px] text-gray-800 dark:text-white border-gray-800 dark:border-white rounded-sm m-1 p-1">
+						<p class="text-base m-0">{plataforma}</p>
 					</div>
 				))}
 			</div>

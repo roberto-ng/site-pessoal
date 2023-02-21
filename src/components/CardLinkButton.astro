@@ -4,13 +4,13 @@ export interface Props {
     text: string,
 }
 
-const { href, text } = Astro.props as Props;
+const { href, text } = Astro.props;
 ---
 
-<div class="button">
+<div class="flex justify-center hover:animate-pulse">
     <a 
         href={href}
-        class="link"
+        class="bg-gray-800 text-white dark:bg-zinc-700  no-underline m-1 w-24 p-2 rounded"
         target="_blank"
         rel="noreferrer"
     >

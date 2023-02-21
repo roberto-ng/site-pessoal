@@ -17,15 +17,15 @@ if (!isDateValid(date)) {
 }
 ---
 
-<div class="flex flex-col gap-6 max-w-lg bg-white shadow-lg rounded p-5 mx-1">
+<div class="flex flex-col gap-6 max-w-lg bg-white dark:bg-zinc-800 shadow-lg rounded p-5 mx-1">
     <a 
-        class="no-underline text-[22px] font-bold"
+        class="no-underline text-[22px] font-bold text-zinc-900 dark:text-white"
         href={`/pt-br/posts/${id}`}
     >
         {post.data.title}
     </a>
 
-    <time class="m-0 text-slate-500" date-time={post.data.date}>
+    <time class="m-0 text-slate-500 dark:text-zinc-400" date-time={post.data.date}>
         Postado em: {date.toLocaleDateString('pt-BR')}
     </time>
 </div>

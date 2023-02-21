@@ -13,18 +13,18 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 
 <Layout title="Roberto Nazareth">
 	<main class="flex flex-col items-center">
-		<h1 class="text-center mb-4 font-['Suez_One'] text-3xl">
+		<h1 class="text-center mb-4 font-['Suez_One'] text-3xl dark:text-white">
 			Contato:
 		</h1>
-		<div class="flex flex-col items-center mb-5 text-slate-700">
-			<div class="p-5 max-w-[800px] mx-5 bg-white rounded shadow-md fadeIn">
+		<div class="flex flex-col items-center mb-5 text-slate-700 dark:text-white">
+			<div class="p-5 max-w-[800px] mx-5 bg-white dark:bg-zinc-800 rounded shadow-md fadeIn">
 				<div class="text-base md:text-lg text-justify">
 					<ContatoTexto />
 				</div>
 			</div>
 		</div>
 
-		<h1 class="text-center mb-4 font-['Suez_One'] text-3xl">
+		<h1 class="text-center mb-4 font-['Suez_One'] text-3xl dark:text-white">
 			Portfólio:
 		</h1>
 		<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-center justify-center mb-5">
@@ -33,7 +33,7 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 			))}
 		</div>
 
-		<h1 class="text-center mb-4 font-['Suez_One'] text-3xl">
+		<h1 class="text-center mb-4 font-['Suez_One'] text-3xl dark:text-white">
 			Blog:
 		</h1>
 		<div class="flex flex-col items-center mb-5">
