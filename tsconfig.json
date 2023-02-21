@@ -1,4 +1,5 @@
 {
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     // Enable top-level await, and other modern ESM features.
     "target": "ESNext",
@@ -13,6 +14,7 @@
     "types": ["astro/client", "vite/client", "node"],
     // Configure for path alias
     "baseUrl": ".",
+    "strictNullChecks": true,
     "paths": {
       "@/*": ["./*"]
     },
