@@ -1,13 +1,11 @@
 ---
-titulo: 'Agência de Turismo'
-repo: 'site-de-turismo'
-descricao: 'Um site de uma empresa de turismo.'
+titulo: '9000 Viagens e Turismo'
+descricao: 'Site de uma empresa de turismo.'
 thumbnail: '/assets/projetos/site-de-turismo-thumb.webp'
-link: 'https://roberto-ng.github.io/site-de-turismo/'
+link: 'https://web.archive.org/web/20190424131642/http://www.9000turismo.com.br/'
 tags:
   - 'JavaScript'
   - 'React'
-  - 'Next.js'
 plataformas:
   - 'Web'
 ---
