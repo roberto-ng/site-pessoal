@@ -10,7 +10,7 @@ const rootDir = dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), tailwind(), partytown()],
+  integrations: [mdx(), tailwind()],
   vite: {
     resolve: {
       alias: {
