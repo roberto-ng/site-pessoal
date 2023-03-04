@@ -7,40 +7,13 @@ export interface Props {
 const { href, text } = Astro.props;
 ---
 
-<div class="flex justify-center hover:animate-pulse">
+<div class="flex justify-center m-1">
     <a 
         href={href}
-        class="bg-gray-800 text-white dark:bg-zinc-700  no-underline m-1 w-24 p-2 rounded"
+        class="w-24 p-2 text-white no-underline transition-all bg-gray-800 rounded hover:bg-gray-500 dark:bg-zinc-700 dark:hover:bg-zinc-500"
         target="_blank"
         rel="noreferrer"
     >
         {text}
     </a>
 </div>
-
-<style lang="scss">
-	$button-background: #313338;
-
-	.button {
-		display: flex; 
-		justify-content: center;
-
-		a {
-			text-decoration: none;
-			box-sizing: border-box;
-		}
-	}
-
-    .link {
-		margin: 5px;
-		width: 100px;
-		padding: 9px;
-		border-radius: 5px;
-		background-color: $button-background;
-		color: white;
-		
-		p {
-			font-size: medium;
-		}
-	}
-</style>

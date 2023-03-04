@@ -18,7 +18,7 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 		</h1>
 		<div class="flex flex-col items-center mb-5 text-slate-700 dark:text-white">
 			<div class="p-5 max-w-[800px] mx-5 bg-white dark:bg-zinc-800 rounded shadow-md fadeIn">
-				<div class="text-base md:text-lg text-justify">
+				<div class="text-base text-justify md:text-lg">
 					<ContatoTexto />
 				</div>
 			</div>
@@ -27,7 +27,7 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 		<h1 class="text-center mb-4 font-['Suez_One'] text-3xl dark:text-white">
 			Portfólio:
 		</h1>
-		<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-center justify-center mb-5">
+		<div class="grid items-center justify-center gap-5 mb-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 			{projetos.map((item) => (
 				<ProjetoCard projeto={item} />
 			))}
