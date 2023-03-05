@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import solidJs from "@astrojs/solid-js";
+import compress from "astro-compress";
 const rootDir = dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
@@ -12,8 +13,10 @@ const rootDir = dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 
 // https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), tailwind(), solidJs()],
+  integrations: [mdx(), tailwind(), solidJs(), compress()],
   vite: {
     resolve: {
       alias: {
