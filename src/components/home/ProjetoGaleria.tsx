@@ -17,13 +17,14 @@ export const ProjetoGaleria: Component<Props> = (props) => {
     const tags = getAllTags(props.projetos);
 
     const projetosFiltrados = () => {
+        // checa se o projeto possui todas as tags selecionadas
         const projectHasSelectedTags = (projeto: Projeto) => {
             return selectedTags()
                 .every(tag => projeto.data.plataformas.includes(tag));
         }
 
         if (selectedTags().size > 0) {
-            // mostrar apenas projetos com as plataforma selecionada
+            // mostrar apenas projetos com as tags selecionada
             return props.projetos.filter(projectHasSelectedTags);
         } else {
             return props.projetos;
