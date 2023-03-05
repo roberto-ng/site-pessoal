@@ -1,5 +1,5 @@
 import { CollectionEntry } from "astro:content";
-import { Component, createSignal, For } from "solid-js";
+import { Component, createSignal, For, Show } from "solid-js";
 import { ProjetoCard } from "./ProjetoCard";
 import { List, Set } from "immutable";
 import { TagList } from "./TagList";
@@ -35,13 +35,18 @@ export const ProjetoGaleria: Component<Props> = (props) => {
             // remover tag ao filtro
             setSelectedTags(selectedTags().remove(tag));
         } else {
-            // selecionar tag ao filtro
+            // adicionar tag ao filtro
             setSelectedTags(selectedTags().add(tag));
         }
     };
 
+    const handleResetFiltersClick = () => {
+        // limpar filtros
+        setSelectedTags(selectedTags().clear());
+    };
+
     return (
-        <div class="px-5 min-h-[570px] w-screen max-w-screen-2xl">
+        <div class="px-5 py-6 min-h-[570px] w-screen max-w-screen-2xl">
             <h1 class="text-3xl text-center font-asap dark:text-white">
                 {props.nome}:
             </h1>
@@ -52,11 +57,30 @@ export const ProjetoGaleria: Component<Props> = (props) => {
                 onClick={handleTagClick}
             />
 
+            <Show when={projetosFiltrados().length === 0}>
+                <div class="flex flex-col items-center pt-3 w-full">
+                    <p class="text-center text-3xl text-slate-700 dark:text-white">
+                        Nenhum projeto encontrado.
+                    </p>
+                </div>
+            </Show>
+
             <div class="grid items-center justify-center gap-5 mb-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <For each={projetosFiltrados()}>
                     {(projeto) => <ProjetoCard projeto={projeto} />}
                 </For>
             </div>
+
+            <Show when={selectedTags().size > 0}>
+                <div class="flex flex-col items-center m-2">
+                    <button
+                        class="text-2xl underline text-gray-800 dark:text-gray-400 dark:hover:text-gray-500 hover:text-zinc-500"
+                        onclick={handleResetFiltersClick}
+                    >
+                        Mostrar todos os projetos
+                    </button>
+                </div>
+            </Show>
         </div>
     );
 }

@@ -17,7 +17,7 @@ export const ProjetoCard: Component<Props> = (props) => {
             />
 
             <div class="p-1 pt-0">
-                <p class="mx-1 mt-0 text-xl font-bold text-center">
+                <p class="mx-1 mt-1 text-xl font-bold text-center">
                     {props.projeto.data.titulo}
                 </p>
 

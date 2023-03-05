@@ -12,7 +12,7 @@ export const TagButton: Component<Props> = (props) => {
         <button
             class={clsx([
                 (props.isSelected) ? 'bg-gray-800 dark:bg-white' : 'bg-transparent',
-                'border border-gray-800 dark:border-white rounded m-1 p-1.5',
+                'transition-colors border border-gray-800 dark:border-white rounded m-1 p-1.5',
             ])}
             onclick={props.onClick}
         >
