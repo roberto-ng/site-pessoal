@@ -1,8 +1,7 @@
-import { Component, createSignal, For } from "solid-js";
 import { CollectionEntry } from "astro:content";
+import { Component, createSignal, For } from "solid-js";
 import { ProjetoCard } from "./ProjetoCard";
 import { List, Set } from "immutable";
-import { TagButton } from "./TagButton";
 import { TagList } from "./TagList";
 
 type Projeto = CollectionEntry<'projeto'>;
@@ -42,7 +41,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
     };
 
     return (
-        <div class="w-screen px-5 max-w-screen-2xl">
+        <div class="px-5 min-h-[570px] w-screen max-w-screen-2xl">
             <h1 class="text-3xl text-center font-asap dark:text-white">
                 {props.nome}:
             </h1>
