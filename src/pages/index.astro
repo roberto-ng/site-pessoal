@@ -1,8 +1,9 @@
 ---
 import { getCollection, getEntryBySlug } from 'astro:content';
 import Layout from '@/src/layouts/Layout.astro';
-import ProjetoCard from '@/src/components/ProjetoCard.astro';
-import PostCard from '../components/PostCard.astro';
+import { ProjetoCard } from '@/src/components/home/ProjetoCard';
+import PostCard from '@/src/components/home/PostCard.astro';
+import { ProjetoGaleria } from '../components/home/ProjetoGaleria';
 
 const projetos = await getCollection('projeto');
 const posts = await getCollection('post');
@@ -24,14 +25,11 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 			</div>
 		</div>
 
-		<h1 class="mb-4 text-3xl text-center font-asap dark:text-white">
-			Portfólio:
-		</h1>
-		<div class="grid items-center justify-center gap-5 mb-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-			{projetos.map((item) => (
-				<ProjetoCard projeto={item} />
-			))}
-		</div>
+		<ProjetoGaleria 
+			client:idle
+			nome="Portfólio"
+			projetos={projetos}
+		/>
 
 		<h1 class="mb-4 text-3xl text-center font-asap dark:text-white">
 			Blog:

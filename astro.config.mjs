@@ -4,13 +4,16 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
+import solidJs from "@astrojs/solid-js";
 const rootDir = dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 
 // https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), tailwind()],
+  integrations: [mdx(), tailwind(), solidJs()],
   vite: {
     resolve: {
       alias: {
