@@ -1,4 +1,5 @@
 import { CollectionEntry } from "astro:content";
+import clsx from "clsx";
 import { Component, For, Show } from "solid-js";
 import { CardLinkButton } from "./CardLinkButton";
 import { TagButton } from "./TagButton";
@@ -9,7 +10,13 @@ interface Props {
 
 export const ProjetoCard: Component<Props> = (props) => {
     return (
-        <div class="sm:w-[300px] sm:min-w-[300px] mx-5 text-slate-700 dark:text-white min-h-[430px] bg-white dark:bg-zinc-800 rounded-t-md rounded-b shadow-lg dark:shadow-xl text-center">
+        <div
+            class={clsx([
+                'w-[90vw] sm:w-[300px] sm:min-w-[300px] min-h-[460px]',
+                'text-slate-700 dark:text-white bg-white dark:bg-zinc-800',
+                'rounded-t-md rounded-b shadow-lg dark:shadow-xl text-center',
+            ])}
+        >
             <img
                 src={props.projeto.data.thumbnail}
                 class="h-[180px] w-full object-cover rounded-t-md"

@@ -11,10 +11,13 @@ export const TagButton: Component<Props> = (props) => {
     return (
         <button
             class={clsx([
-                (props.isSelected) ? 'bg-gray-800 dark:bg-white' : 'bg-transparent',
+                (props.isSelected) 
+                    ? 'bg-gray-800 dark:bg-white hover:bg-gray-600 dark:hover:bg-slate-300' 
+                    : 'bg-transparent hover:bg-zinc-300 dark:hover:bg-zinc-700',
                 'transition-colors duration-300 border border-gray-800 dark:border-white rounded m-1 p-1.5',
             ])}
             onclick={props.onClick}
+            disabled={props.onClick == null}
         >
             <p
                 class={clsx([

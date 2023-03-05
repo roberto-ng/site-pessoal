@@ -10,7 +10,7 @@ type Props = {
 
 export const TagList: Component<Props> = (props) => {    
     return (
-        <div class="flex flex-row flex-wrap items-center justify-center sm:justify-start px-1 md:px-5 my-4">
+        <div class="flex flex-row flex-wrap items-center justify-center lg:justify-start w-full px-1 md:px-5 my-4">
             <p class="mr-1 text-xl text-slate-700 dark:text-white">
                 Filtrar:
             </p>

@@ -34,10 +34,10 @@ export const ProjetoGaleria: Component<Props> = (props) => {
     const handleTagClick = (tag: string) => {
         if (selectedTags().includes(tag)) {
             // remover tag ao filtro
-            setSelectedTags(selectedTags().remove(tag));
+            setSelectedTags(Set([]));
         } else {
             // adicionar tag ao filtro
-            setSelectedTags(selectedTags().add(tag));
+            setSelectedTags(Set([tag]));
         }
     };
 
@@ -47,7 +47,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
     };
 
     return (
-        <div class="px-1 md:px-5 py-6 min-h-[570px] w-screen max-w-screen-2xl">
+        <div class="flex flex-col items-center py-6 min-h-[570px] w-screen max-w-screen-2xl">
             <h1 class="text-3xl text-center font-asap dark:text-white">
                 {props.nome}:
             </h1>
