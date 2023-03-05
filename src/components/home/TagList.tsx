@@ -1,4 +1,3 @@
-import { SelectedTags } from "@/src/stores/selectedTags"
 import { Set } from "immutable";
 import { Accessor, Component, For } from "solid-js"
 import { TagButton } from "./TagButton";

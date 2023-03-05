@@ -19,7 +19,7 @@ export const TagButton: Component<Props> = (props) => {
             <p
                 class={clsx([
                     (props.isSelected) ? 'text-white dark:text-gray-800' : 'text-gray-800 dark:text-white',
-                    "m-0 text-base"
+                    'm-0 text-base'
                 ])}
             >
                 {props.tag}

@@ -1,27 +1,31 @@
-import { Component, createEffect, createMemo, createSignal, For } from "solid-js";
+import { Component, createSignal, For } from "solid-js";
 import { CollectionEntry } from "astro:content";
 import { ProjetoCard } from "./ProjetoCard";
 import { List, Set } from "immutable";
-import { Projeto } from "@/src/lib/projeto";
 import { TagButton } from "./TagButton";
 import { TagList } from "./TagList";
 
+type Projeto = CollectionEntry<'projeto'>;
+
 type Props = {
     nome: string,
-    projetos: CollectionEntry<'projeto'>[],
+    projetos: Projeto[],
 };
 
 export const ProjetoGaleria: Component<Props> = (props) => {
     const [selectedTags, setSelectedTags] = createSignal(Set<string>());
 
     const tags = getAllTags(props.projetos);
-    
+
     const projetosFiltrados = () => {
-        const isTagSelected = (tag) => selectedTags().includes(tag);
+        const projectHasSelectedTags = (projeto: Projeto) => {
+            return selectedTags()
+                .every(tag => projeto.data.plataformas.includes(tag));
+        }
 
         if (selectedTags().size > 0) {
-            // mostrar apenas projetos com alguma plataforma selecionada
-            return props.projetos.filter(({ data }) => data.plataformas.some(isTagSelected));
+            // mostrar apenas projetos com as plataforma selecionada
+            return props.projetos.filter(projectHasSelectedTags);
         } else {
             return props.projetos;
         }
@@ -38,7 +42,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
     };
 
     return (
-        <div>
+        <div class="w-screen px-5 max-w-screen-2xl">
             <h1 class="text-3xl text-center font-asap dark:text-white">
                 {props.nome}:
             </h1>
@@ -63,7 +67,7 @@ function getAllTags(projetos: CollectionEntry<'projeto'>[]) {
         .reduce(
             (tags, projeto) => tags.merge(getProjectTags(projeto)),
             Set<string>(),
-        ) // buscar todas as tags
+        ) // buscar todas as plataformas
         .sort() // ordenar alfabeticamente
         .toArray();
 }
