@@ -66,7 +66,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
                 </div>
             </Show>
 
-            <div class="grid items-center justify-center gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="grid items-center justify-center gap-5 mb-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
                 <For each={projetosFiltrados()}>
                     {(projeto) => <ProjetoCard projeto={projeto} />}
                 </For>
