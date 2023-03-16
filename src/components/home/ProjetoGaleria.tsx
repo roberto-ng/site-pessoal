@@ -12,38 +12,33 @@ type Props = {
 };
 
 export const ProjetoGaleria: Component<Props> = (props) => {
-    const [selectedTags, setSelectedTags] = createSignal(Set<string>());
+    const [selectedTag, setSelectedTag] = createSignal<string | null>(null);
 
     const tags = getAllTags(props.projetos);
 
     const projetosFiltrados = () => {
-        // checa se o projeto possui todas as tags selecionadas
-        const projectHasSelectedTags = (projeto: Projeto) => {
-            return selectedTags()
-                .every(tag => projeto.data.plataformas.includes(tag));
-        }
-
-        if (selectedTags().size > 0) {
+        if (selectedTag() != null) {
             // mostrar apenas projetos com as tags selecionada
-            return props.projetos.filter(projectHasSelectedTags);
+            return props.projetos
+                .filter(({ data }) => data.plataformas.includes(selectedTag()!));
         } else {
             return props.projetos;
         }
     };
 
     const handleTagClick = (tag: string) => {
-        if (selectedTags().includes(tag)) {
+        if (selectedTag() === tag) {
             // remover tag ao filtro
-            setSelectedTags(Set([]));
+            setSelectedTag(null);
         } else {
             // adicionar tag ao filtro
-            setSelectedTags(Set([tag]));
+            setSelectedTag(tag);
         }
     };
 
     const handleResetFiltersClick = () => {
         // limpar filtros
-        setSelectedTags(selectedTags().clear());
+        setSelectedTag(null);
     };
 
     return (
@@ -54,7 +49,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
 
             <TagList
                 tags={tags}
-                selectedTags={selectedTags}
+                selectedTag={selectedTag}
                 onClick={handleTagClick}
             />
 
@@ -72,7 +67,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
                 </For>
             </div>
 
-            <Show when={selectedTags().size > 0}>
+            <Show when={selectedTag() != null}>
                 <div class="flex flex-col items-center m-2">
                     <button
                         class="text-2xl underline text-gray-800 dark:text-gray-400 dark:hover:text-gray-500 hover:text-zinc-500"
@@ -96,9 +91,4 @@ function getAllTags(projetos: CollectionEntry<'projeto'>[]) {
             return 0;
         })
         .toOrderedSet();
-}
-
-function getProjectTags(projeto: CollectionEntry<'projeto'>) {
-    return projeto.data.plataformas
-        .filter(tag => tag != null); // remover itens nulos
 }
