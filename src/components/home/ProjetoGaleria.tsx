@@ -66,7 +66,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
                 </div>
             </Show>
 
-            <div class="grid items-center justify-center gap-5 mb-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="grid items-center justify-center gap-5 mb-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <For each={projetosFiltrados()}>
                     {(projeto) => <ProjetoCard projeto={projeto} />}
                 </For>
@@ -87,13 +87,15 @@ export const ProjetoGaleria: Component<Props> = (props) => {
 }
 
 function getAllTags(projetos: CollectionEntry<'projeto'>[]) {
-    return projetos
-        .reduce(
-            (tags, projeto) => tags.merge(getProjectTags(projeto)),
-            Set<string>(),
-        ) // buscar todas as plataformas
-        .sort() // ordenar alfabeticamente
-        .toArray();
+    return List(projetos)
+        .flatMap(projeto => projeto.data.plataformas)
+        .sort((a, b) => {
+            // ordenar como case insensitive
+            if (a.toLowerCase() < b.toLowerCase()) return -1;
+            if (a.toLowerCase() > b.toLowerCase()) return 1;
+            return 0;
+        })
+        .toOrderedSet();
 }
 
 function getProjectTags(projeto: CollectionEntry<'projeto'>) {
