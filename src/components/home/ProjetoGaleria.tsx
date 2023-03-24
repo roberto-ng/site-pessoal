@@ -16,28 +16,28 @@ export const ProjetoGaleria: Component<Props> = (props) => {
 
     const tags = getAllTags(props.projetos);
 
-    const projetosFiltrados = () => {
+    const projetosExibidos = () => {
         if (selectedTag() != null) {
-            // mostrar apenas projetos com as tags selecionada
-            return props.projetos
-                .filter(({ data }) => data.plataformas.includes(selectedTag()!));
+            // mostrar apenas projetos com a tag selecionada
+            return props.projetos.filter(({ data }) => data.plataformas.includes(selectedTag()!));
         } else {
+            // mostrar todos projetos
             return props.projetos;
         }
     };
 
     const handleTagClick = (tag: string) => {
         if (selectedTag() === tag) {
-            // remover tag ao filtro
+            // remover tag
             setSelectedTag(null);
         } else {
-            // adicionar tag ao filtro
+            // selecionar tag
             setSelectedTag(tag);
         }
     };
 
-    const handleResetFiltersClick = () => {
-        // limpar filtros
+    const limparFiltro = () => {
+        // limpar tags
         setSelectedTag(null);
     };
 
@@ -53,7 +53,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
                 onClick={handleTagClick}
             />
 
-            <Show when={projetosFiltrados().length === 0}>
+            <Show when={projetosExibidos().length === 0}>
                 <div class="flex flex-col items-center pt-3 w-full">
                     <p class="text-center text-3xl text-slate-700 dark:text-white">
                         Nenhum projeto encontrado.
@@ -62,7 +62,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
             </Show>
 
             <div class="grid items-center justify-center gap-5 mb-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
-                <For each={projetosFiltrados()}>
+                <For each={projetosExibidos()}>
                     {(projeto) => <ProjetoCard projeto={projeto} />}
                 </For>
             </div>
@@ -71,7 +71,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
                 <div class="flex flex-col items-center m-2">
                     <button
                         class="text-2xl underline text-gray-800 dark:text-gray-400 dark:hover:text-gray-500 hover:text-zinc-500"
-                        onclick={handleResetFiltersClick}
+                        onclick={limparFiltro}
                     >
                         Mostrar todos os projetos
                     </button>
