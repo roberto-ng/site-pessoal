@@ -81,7 +81,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
     );
 }
 
-function getAllTags(projetos: CollectionEntry<'projeto'>[]) {
+function getAllTags(projetos: Projeto[]): Set<string> {
     return List(projetos)
         .flatMap(projeto => projeto.data.plataformas)
         .sort((a, b) => {
