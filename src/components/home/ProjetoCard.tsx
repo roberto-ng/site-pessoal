@@ -1,3 +1,4 @@
+import { Projeto } from "@/src/content/config";
 import { CollectionEntry } from "astro:content";
 import clsx from "clsx";
 import { Component, For, Show } from "solid-js";
@@ -5,7 +6,7 @@ import { CardLinkButton } from "./CardLinkButton";
 import { TagButton } from "./TagButton";
 
 interface Props {
-    projeto: CollectionEntry<'projeto'>,
+    projeto: Projeto,
 }
 
 export const ProjetoCard: Component<Props> = (props) => {
@@ -18,38 +19,38 @@ export const ProjetoCard: Component<Props> = (props) => {
             ])}
         >
             <img
-                src={props.projeto.data.thumbnail}
+                src={props.projeto.thumbnail}
                 class="h-[180px] w-full object-cover rounded-t-md"
                 loading="lazy"
             />
 
             <div class="p-1 pt-0">
                 <p class="mx-1 mt-1 text-xl font-bold text-center">
-                    {props.projeto.data.titulo}
+                    {props.projeto.titulo}
                 </p>
 
                 <p class="mx-1 text-center">
-                    {props.projeto.data.descricao}
+                    {props.projeto.descricao}
                 </p>
 
                 <div class="flex flex-row flex-wrap justify-center">
-                    <Show when={props.projeto.data.link != null}>
+                    <Show when={props.projeto.link != null}>
                         <CardLinkButton
-                            href={props.projeto.data.link!}
+                            href={props.projeto.link!}
                             text="Abrir site"
                         />
                     </Show>
 
-                    <Show when={props.projeto.data.download_link != null}>
+                    <Show when={props.projeto.download_link != null}>
                         <CardLinkButton
-                            href={props.projeto.data.download_link!}
+                            href={props.projeto.download_link!}
                             text="Baixar"
                         />
                     </Show>
 
-                    <Show when={props.projeto.data.repo != null}>
+                    <Show when={props.projeto.repo != null}>
                         <CardLinkButton
-                            href={`https://github.com/roberto-ng/${props.projeto.data.repo}`}
+                            href={`https://github.com/roberto-ng/${props.projeto.repo}`}
                             text="Repositório"
                         />
                     </Show>
@@ -58,7 +59,7 @@ export const ProjetoCard: Component<Props> = (props) => {
                 <div class="text-lg text-center">
                     <p>Feito com: </p>
                     <div class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap">
-                        <For each={props.projeto.data.tags}>
+                        <For each={props.projeto.tags}>
                             {(tag) => <TagButton tag={tag} />}
                         </For>
                     </div>
@@ -67,7 +68,7 @@ export const ProjetoCard: Component<Props> = (props) => {
                 <div class="text-lg text-center">
                     <p>Disponível para: </p>
                     <div class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap">
-                        <For each={props.projeto.data.plataformas}>
+                        <For each={props.projeto.plataformas}>
                             {(plataforma) => <TagButton tag={plataforma} />}
                         </For>
                     </div>

@@ -3,8 +3,7 @@ import { Component, createSignal, For, Show } from "solid-js";
 import { ProjetoCard } from "./ProjetoCard";
 import { List, Set } from "immutable";
 import { TagList } from "./TagList";
-
-type Projeto = CollectionEntry<'projeto'>;
+import { Projeto } from "@/src/content/config";
 
 type Props = {
     nome: string,
@@ -19,7 +18,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
     const projetosExibidos = () => {
         if (selectedTag() != null) {
             // mostrar apenas projetos com a tag selecionada
-            return props.projetos.filter(({ data }) => data.plataformas.includes(selectedTag()!));
+            return props.projetos.filter(projeto => projeto.plataformas.includes(selectedTag()!));
         } else {
             // mostrar todos projetos
             return props.projetos;
@@ -83,7 +82,7 @@ export const ProjetoGaleria: Component<Props> = (props) => {
 
 function getAllTags(projetos: Projeto[]): Set<string> {
     return List(projetos)
-        .flatMap(projeto => projeto.data.plataformas)
+        .flatMap(projeto => projeto.plataformas)
         .sort((a, b) => {
             // ordenar como case insensitive
             if (a.toLowerCase() < b.toLowerCase()) return -1;
