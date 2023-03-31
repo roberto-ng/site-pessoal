@@ -9,6 +9,8 @@ const projetos = await getCollection('projeto');
 const posts = await getCollection('post');
 const contatoTexto = await getEntryBySlug('texto', 'contato');
 
+const projetosDados = projetos.map(projeto => projeto.data);
+
 const { Content: ContatoTexto } = await contatoTexto.render();
 ---
 
@@ -28,7 +30,7 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 		<ProjetoGaleria 
 			client:idle
 			nome="Portfólio"
-			projetos={projetos}
+			projetos={projetosDados}
 		/>
 
 		<h1 class="mb-4 text-3xl text-center font-asap dark:text-white">
