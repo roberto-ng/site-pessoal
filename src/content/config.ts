@@ -21,9 +21,7 @@ export const projetoSchema = z.object({
 });
 
 export const collections = {
-    'post': defineCollection({
-        schema: postSchema
-    }),
+
 
     'projeto': defineCollection({
         schema: projetoSchema,
