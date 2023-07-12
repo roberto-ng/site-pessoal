@@ -6,13 +6,9 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import solidJs from "@astrojs/solid-js";
 import compress from "astro-compress";
+import vercel from '@astrojs/vercel/static';
+
 const rootDir = dirname(fileURLToPath(import.meta.url));
-
-// https://astro.build/config
-
-// https://astro.build/config
-
-// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,5 +30,9 @@ export default defineConfig({
       theme: 'dracula-soft'
     }
   },
-  site: 'https://robertonazareth.dev/'
+  site: 'https://robertonazareth.dev/',
+  output: 'static',
+  adapter: vercel({
+    analytics: true,
+  }),
 });
