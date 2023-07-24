@@ -1,12 +1,10 @@
 import { defineConfig } from 'astro/config';
-import partytown from "@astrojs/partytown";
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import solidJs from "@astrojs/solid-js";
 import compress from "astro-compress";
-import vercel from '@astrojs/vercel/static';
 
 const rootDir = dirname(fileURLToPath(import.meta.url));
 
@@ -32,7 +30,4 @@ export default defineConfig({
   },
   site: 'https://robertonazareth.dev/',
   output: 'static',
-  adapter: vercel({
-    analytics: true,
-  }),
 });
