@@ -1,5 +1,4 @@
 #!/bin/sh
 curl -fsSL https://bun.sh/install | bash
-source /opt/buildhome/.bashrc
-bun install
-bun run build
+~/.bun/bin/bun install
+~/.bun/bin/bun run build
