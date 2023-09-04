@@ -4,9 +4,9 @@ date: '2022-07-31'
 ---
 import BlogImage from '@/src/components/blog/BlogImage.astro'
 
-Electron é talvez o framework de aplicações para desktop mais popular da atualidade, porém apesar da sua praticidade ele tem um uso de recursos do computador muito alto. Isso acontece porque o Electron incorpora o Chromium separadamente em cada nova aplicação, o que faz com que dois programas diferentes não possam compartilhar a mesma instância do Chromium.
+O Electron é talvez o framework de aplicações para desktop mais popular da atualidade. Porém, apesar de sua praticidade, ele tem um alto uso de recursos do computador. Isso acontece porque o Electron incorpora o Chromium separadamente em cada nova aplicação, o que faz com que dois programas diferentes não possam compartilhar a mesma instância do Chromium.
 
-O Tauri é um novo framework que também permite que desenvolvedores criem aplicações multiplataforma para desktop usando tecnologias da Web, mas, ao contrário do Electron, que incorpora o Chromium separadamente em cada nova aplicação, o Tauri usa a WebView nativa de cada sistema operacional, resultando em aplicações menores e que usam menos RAM.
+O Tauri é um novo framework que também permite que desenvolvedores criem aplicações multiplataforma para desktop usando tecnologias da Web. No entanto, ao contrário do Electron, que incorpora o Chromium separadamente em cada nova aplicação, o Tauri usa a WebView nativa de cada sistema operacional, resultando em aplicações menores e que usam menos RAM.
 
 ### Utilização
 
@@ -23,7 +23,7 @@ A CLI do Tauri fará várias perguntas, incluindo quais bibliotecas você deseja
     width="500px"
 />
 
-Para testar esse novo framework, decidi fazer um programa simples que usa a MET Norway Weather API para mostrar a temperatura em diversas cidades. A aplicação usa apenas 45 MB de memória RAM e o executável pesa 13 MB.
+Para testar esse novo framework, decidi fazer um programa simples que usa a MET Norway Weather API para mostrar a temperatura em diversas cidades. A aplicação usa apenas 45 MB de memória RAM, e o executável pesa 13 MB.
 
 <BlogImage
     src="/assets/posts/weather-app.png"

@@ -1,8 +1,7 @@
 ---
-import { CollectionEntry, getCollection, getEntryBySlug } from "astro:content";
-import path from "path";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { Temporal } from '@js-temporal/polyfill';
 import Layout from "@/src/layouts/Layout.astro";
-import { isDateValid, Post } from "@/src/lib/post";
 
 export interface Props {
     post: CollectionEntry<'post'>;
@@ -11,7 +10,7 @@ export interface Props {
 export async function getStaticPaths() {
     const posts = await getCollection('post');
     return posts.map((post) => {
-        const [lang, id] = post.slug.split("/");
+        const [lang, id] = post.slug.split('/');
 
         return {
             params: {
@@ -28,11 +27,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props as Props;
 const { Content: PostContent } = await post.render();
 
-const date = new Date(post.data.date + " EDT");
-if (!isDateValid(date)) {
-    const file = path.parse(post.slug).base;
-    throw new Error(`Data do post '${file}' inválida: ${post.data.date}`);
-}
+const date = Temporal.PlainDate.from(post.data.date)
 ---
 
 <Layout title={`Roberto Nazareth - ${post.data.title}`}>
@@ -42,7 +37,7 @@ if (!isDateValid(date)) {
                 {post.data.title}
             </h1>
             <time class="m-0 text-slate-500 dark:text-zinc-400" date-time={post.data.date}>
-                Postado em: {date.toLocaleDateString("pt-BR")}
+                Postado em: {date.toLocaleString('pt-BR')}
             </time>
         </header>
 

@@ -1,7 +1,7 @@
 ---
 import path from 'path';
-import { CollectionEntry } from 'astro:content';
-import { isDateValid, Post } from "@/src/lib/post";
+import { type CollectionEntry } from 'astro:content';
+import { Temporal } from '@js-temporal/polyfill';
 
 export type Props = {
     post: CollectionEntry<'post'>,
@@ -11,10 +11,7 @@ export type Props = {
 const { post, file } = Astro.props;
 const id = path.parse(file).name;
 
-const date = new Date(post.data.date + ' EDT');
-if (!isDateValid(date)) {
-    throw new Error(`Data do post '${id}' inválida: ${post.data.date}`);
-}
+const date = Temporal.PlainDate.from(post.data.date);
 ---
 
 <div class="flex flex-col max-w-lg gap-6 p-5 mx-1 bg-white rounded shadow-lg dark:bg-zinc-800">
@@ -26,6 +23,6 @@ if (!isDateValid(date)) {
     </a>
 
     <time class="m-0 text-slate-500 dark:text-zinc-400" date-time={post.data.date}>
-        Postado em: {date.toLocaleDateString('pt-BR')}
+        Postado em: {date.toLocaleString('pt-BR')}
     </time>
 </div>
