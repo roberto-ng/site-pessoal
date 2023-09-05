@@ -42,12 +42,13 @@ const keywords = [
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 		</GoogleFontsOptimizer>
 
-		<ViewTransitions />
+		<ViewTransitions fallback="swap" />
 	</head>
 
-	<body class="bg-slate-100 dark:bg-zinc-900" transition:animate="none">
+	<body class="bg-slate-100 dark:bg-zinc-900" transition:animate="fade">
 		<header 
 			class="fixed flex items-center justify-center z-[100] top-0 mb-[100px] h-[70px] w-full bg-white dark:bg-zinc-800 shadow-md"
+			transition:name="site-header"
 		>					
 			<a href="/" class="no-underline font-asap text-[27px] m-0">
 				<h1 class="m-0 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
@@ -56,7 +57,7 @@ const keywords = [
 			</a>
 		</header>
 
-		<div class="mt-[100px]" transition:animate="fade">
+		<div class="mt-[100px]" >
 			<slot />
 		</div>
 
