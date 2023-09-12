@@ -8,7 +8,7 @@ type Props = {
 };
 
 function getTagLink(tag: string): string {
-    if (Astro.props.selectedTag) {
+    if (Astro.props.selectedTag === tag) {
         // remover filtro
         return '/';
     }
