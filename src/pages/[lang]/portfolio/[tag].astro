@@ -1,0 +1,23 @@
+---
+import { getAllTags } from "@/src/lib/projetos";
+import { getCollection, getEntryBySlug } from "astro:content";
+import Home from "@/src/layouts/Home.astro";
+
+export async function getStaticPaths() {
+    const projetos = await getCollection("projeto");
+    const projetosDados = projetos.map((projeto) => projeto.data);
+
+    return getAllTags(projetosDados)
+        .map((tag) => ({
+            params: { tag, lang: 'pt-br' },
+        }))
+        .toArray();
+}
+
+const { tag: selectedTag } = Astro.params;
+if (selectedTag == null) {
+    throw new Error("O parametro tag é nulo");
+}
+---
+
+<Home filtro={selectedTag} />

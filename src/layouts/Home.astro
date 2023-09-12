@@ -1,0 +1,95 @@
+---
+import { getCollection, getEntryBySlug } from 'astro:content';
+import Layout from '@/src/layouts/Layout.astro';
+import ProjetoCard from '@/src/components/home/ProjetoCard.astro';
+import PostCard from '@/src/components/home/PostCard.astro';
+import TagList from '@/src/components/home/TagList.astro';
+import { getAllTags } from '../lib/projetos';
+import type { Projeto } from '../content/config';
+
+export type Props = {
+    filtro?: string,
+};
+
+const filtro = Astro.props.filtro;
+const projetos = await getCollection('projeto');
+const projetosDados = projetos.map(projeto => projeto.data);
+const projetosExibidos = projetosDados.filter((projeto) => {
+	if (filtro != null && filtro.length != 0) {
+		return projeto.plataformas.includes(filtro);
+	} else {
+		return true;
+	}
+})
+
+const tags = getAllTags(projetosDados);
+
+const posts = await getCollection('post');
+const contatoTexto = await getEntryBySlug('texto', 'contato');
+
+const { Content: ContatoTexto } = await contatoTexto.render();
+---
+
+<Layout title="Roberto Nazareth">
+	<main class="flex flex-col items-center">
+		<h1 class="mb-4 text-3xl text-center font-asap dark:text-white">
+			Contato:
+		</h1>
+		<div class="flex flex-col items-center mb-5 text-slate-700 dark:text-white">
+			<div class="p-5 max-w-[800px] mx-5 bg-white dark:bg-zinc-800 rounded shadow-md">
+				<div class="text-base text-justify md:text-lg">
+					<ContatoTexto />
+				</div>
+			</div>
+		</div>
+
+		<div class="flex flex-col items-center py-6 min-h-[570px] w-screen max-w-screen-2xl">
+            <h1 class="text-3xl text-center font-asap dark:text-white">
+                Portfólio:
+            </h1>
+
+            <TagList
+                tags={tags}
+                selectedTag={Astro.props.filtro}
+            />
+
+			{(projetosExibidos.length === 0) && (
+                <div class="flex flex-col items-center pt-3 w-full">
+                    <p class="text-center text-3xl text-slate-700 dark:text-white">
+                        Nenhum projeto encontrado.
+                    </p>
+                </div>
+			)}
+
+            <div 
+                class="grid items-center justify-center gap-5 mb-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4"
+                transition:animate="slide"
+            >
+                {projetosExibidos.map((projeto) => (
+                    <ProjetoCard projeto={projeto} />
+                ))}
+            </div>
+
+            {(filtro != null) && (
+
+                <div class="flex flex-col items-center m-2">
+                    <a
+                        class="text-2xl underline text-gray-800 dark:text-gray-400 dark:hover:text-gray-500 hover:text-zinc-500"
+                        href="/"
+                    >
+                        Mostrar todos os projetos
+                    </a>
+                </div>
+            )}
+        </div>
+
+		<h1 class="mb-4 text-3xl text-center font-asap dark:text-white">
+			Blog:
+		</h1>
+		<div class="flex flex-col items-center mb-5">
+			{posts.map(post => (
+				<PostCard post={post} file={post.slug} />
+			))}
+		</div>
+	</main>
+</Layout>

@@ -1,0 +1,28 @@
+---
+import { Set } from "immutable";
+import TagButton from "./TagButton.astro";
+
+type Props = {
+    tags: Set<string>;
+    selectedTag?: string;
+};
+
+---
+
+<div
+    class="flex flex-row flex-wrap items-center justify-center lg:justify-start w-full px-1 md:px-8 my-4"
+>
+    <p class="mr-1 text-xl text-slate-700 select-none dark:text-white">
+        Filtrar:
+    </p>
+
+    {
+        Astro.props.tags.map((tag) => (
+            <TagButton
+                tag={tag}
+                href={`/pt-br/portfolio/${tag}`}
+                isSelected={Astro.props.selectedTag === tag}
+            />
+        ))
+    }
+</div>

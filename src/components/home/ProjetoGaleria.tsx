@@ -1,9 +1,8 @@
-import { CollectionEntry } from "astro:content";
-import { Component, createSignal, For, Show } from "solid-js";
-import { ProjetoCard } from "./ProjetoCard";
+import { type Component, createSignal, For, Show } from "solid-js";
+import { ProjetoCard } from "./ProjetoCard.astro";
 import { List, Set } from "immutable";
 import { TagList } from "./TagList";
-import { Projeto } from "@/src/content/config";
+import { type Projeto } from "@/src/content/config";
 
 type Props = {
     nome: string,

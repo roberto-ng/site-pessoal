@@ -1,0 +1,32 @@
+---
+import clsx from "clsx";
+
+type Props = {
+    tag: string;
+    href?: string;
+    isSelected?: boolean;
+};
+
+const Element = (Astro.props.href == null) ? 'button' : 'a';
+---
+
+<Element
+    class={clsx([
+        Astro.props.isSelected
+            ? "bg-gray-800 dark:bg-white hover:bg-gray-600 dark:hover:bg-slate-200 dark:hover:border-slate-200"
+            : "bg-transparent hover:bg-zinc-300 dark:hover:bg-zinc-700",
+        "transition-colors duration-300 border border-gray-800 dark:border-white rounded m-1 p-1.5",
+    ])}
+    href={Astro.props.href}
+>
+    <p
+        class={clsx([
+            Astro.props.isSelected
+                ? "text-white dark:text-gray-800"
+                : "text-gray-800 dark:text-white",
+            "m-0 text-base",
+        ])}
+    >
+        {Astro.props.tag}
+    </p>
+</Element>
