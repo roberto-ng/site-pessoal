@@ -7,6 +7,16 @@ type Props = {
     selectedTag?: string;
 };
 
+function getTagLink(tag: string): string {
+    if (Astro.props.selectedTag) {
+        // remover filtro
+        return '/';
+    }
+    else {
+        return `/pt-br/portfolio/${tag}`;
+    }
+}
+
 ---
 
 <div
@@ -20,7 +30,7 @@ type Props = {
         Astro.props.tags.map((tag) => (
             <TagButton
                 tag={tag}
-                href={`/pt-br/portfolio/${tag}`}
+                href={getTagLink(tag)}
                 isSelected={Astro.props.selectedTag === tag}
             />
         ))
