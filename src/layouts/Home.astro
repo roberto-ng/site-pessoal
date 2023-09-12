@@ -5,7 +5,6 @@ import ProjetoCard from '@/src/components/home/ProjetoCard.astro';
 import PostCard from '@/src/components/home/PostCard.astro';
 import TagList from '@/src/components/home/TagList.astro';
 import { getAllTags } from '../lib/projetos';
-import type { Projeto } from '../content/config';
 
 export type Props = {
     filtro?: string,
@@ -25,9 +24,6 @@ const projetosExibidos = projetosDados.filter((projeto) => {
 const tags = getAllTags(projetosDados);
 
 const posts = await getCollection('post');
-const contatoTexto = await getEntryBySlug('texto', 'contato');
-
-const { Content: ContatoTexto } = await contatoTexto.render();
 ---
 
 <Layout title="Roberto Nazareth">
@@ -38,7 +34,13 @@ const { Content: ContatoTexto } = await contatoTexto.render();
 		<div class="flex flex-col items-center mb-5 text-slate-700 dark:text-white">
 			<div class="p-5 max-w-[800px] mx-5 bg-white dark:bg-zinc-800 rounded shadow-md">
 				<div class="text-base text-justify md:text-lg">
-					<ContatoTexto />
+					E-mail: robertonazareth1@gmail.com
+                    <br />
+
+                    GitHub: 
+                    <a href="https://github.com/roberto-ng">
+                        https://github.com/roberto-ng
+                    </a>
 				</div>
 			</div>
 		</div>
