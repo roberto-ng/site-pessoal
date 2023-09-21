@@ -10,6 +10,7 @@ interface Props {
 ---
 
 <div
+    transition:name={`portfolio_${Astro.props.projeto.titulo}`}
     class={clsx([
         "w-[90vw] sm:w-[300px] sm:min-w-[300px] min-h-[460px]",
         "text-slate-700 dark:text-white bg-white dark:bg-zinc-800",
