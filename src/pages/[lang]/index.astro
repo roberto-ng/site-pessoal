@@ -1,0 +1,17 @@
+---
+import Home from '@/src/layouts/Home.astro';
+
+console.log(Astro.preferredLocaleList)
+
+export function getStaticPaths() {
+    return [
+        {
+            params: {
+                lang: 'pt-br',
+            }
+        }
+    ];
+}
+---
+
+<Home />

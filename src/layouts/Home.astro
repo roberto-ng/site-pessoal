@@ -12,17 +12,19 @@ export type Props = {
 };
 
 const filtro = Astro.props.filtro;
-const projetos = await getCollection('projeto');
-const projetosDados = projetos.map(projeto => projeto.data);
-const projetosExibidos = projetosDados.filter((projeto) => {
-	if (filtro != null && filtro.length != 0) {
+const projetosResultado = await getCollection('projeto');
+const projetos = projetosResultado.map(projeto => projeto.data);
+
+const projetosExibidos = projetos.filter((projeto) => {
+    if (filtro == null || filtro.length === 0) {
+        // se o filtro estiver vazio, exibir todos os projetos
+        return true;
+    } else {
 		return projeto.plataformas.includes(filtro);
-	} else {
-		return true;
 	}
 })
 
-const tags = getAllTags(projetosDados);
+const tags = getAllTags(projetos);
 
 const posts = await getCollection('post');
 const contatoTexto = await getEntryBySlug('texto', 'contato');

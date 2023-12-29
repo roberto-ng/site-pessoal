@@ -1,7 +1,7 @@
 {
   "name": "@example/basics",
   "version": "0.0.1",
-  "private": true,
+  "private": true,  
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -9,15 +9,15 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^1.0.0",
+    "@astrojs/mdx": "2.0.3",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18.6.3",
-    "astro": "^3.0.8",
+    "astro": "4.0.8",
     "sass": "^1.53.0"
   },
   "dependencies": {
-    "@astrojs/solid-js": "^3.0.0",
-    "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/solid-js": "3.0.3",
+    "@astrojs/tailwind": "5.1.0",
     "@js-temporal/polyfill": "^0.4.4",
     "astro-google-fonts-optimizer": "^0.2.2",
     "clsx": "^1.2.1",

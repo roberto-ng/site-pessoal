@@ -7,6 +7,10 @@ import TagButton from "./TagButton.astro";
 interface Props {
     projeto: Projeto;
 }
+
+const { link, download_link, repo } = Astro.props.projeto;
+
+const projetoSemLinks = link == null && download_link == null && repo == null;
 ---
 
 <div
@@ -23,54 +27,63 @@ interface Props {
         loading="lazy"
     />
 
-    <div class="p-1 pt-0">
-        <p class="mx-1 mt-1 text-xl font-bold text-center">
-            {Astro.props.projeto.titulo}
-        </p>
+    <div class="h-full p-1 pt-0 flex flex-col items-center justify-between">
+        <div>
+            <p class="mx-1 mt-1 text-xl font-bold text-center">
+                {Astro.props.projeto.titulo}
+            </p>
+    
+            <p class="mx-1 text-center">
+                {Astro.props.projeto.descricao}
+            </p>
+    
+            <div class="flex flex-row flex-wrap justify-center">
+                {(Astro.props.projeto.link != null) && (
+                    <CardLinkButton href={Astro.props.projeto.link!} text="Abrir site" />
+                )}
+    
+                {(Astro.props.projeto.download_link != null)  && (
+                    <CardLinkButton
+                        href={Astro.props.projeto.download_link!}
+                        text="Baixar"
+                    />
+                )}
+    
+                {(Astro.props.projeto.repo != null) && (
+                    <CardLinkButton
+                        href={`https://github.com/roberto-ng/${Astro.props.projeto.repo}`}
+                        text="Repositório"
+                    />
+                )}
 
-        <p class="mx-1 text-center">
-            {Astro.props.projeto.descricao}
-        </p>
-
-        <div class="flex flex-row flex-wrap justify-center">
-            {(Astro.props.projeto.link != null) && (
-                <CardLinkButton href={Astro.props.projeto.link!} text="Abrir site" />
-            )}
-
-            {(Astro.props.projeto.download_link != null)  && (
-                <CardLinkButton
-                    href={Astro.props.projeto.download_link!}
-                    text="Baixar"
-                />
-            )}
-
-            {(Astro.props.projeto.repo != null) && (
-                <CardLinkButton
-                    href={`https://github.com/roberto-ng/${Astro.props.projeto.repo}`}
-                    text="Repositório"
-                />
-            )}
-        </div>
-
-        <div class="text-lg text-center">
-            <p>Feito com:</p>
-            <div
-                class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap"
-            >
-                {Astro.props.projeto.tags.map((tag) => (
-                    <TagButton tag={tag} />
-                ))}
+                {(projetoSemLinks) && (
+                    <div class="mt-10">
+                    </div>
+                )}
             </div>
         </div>
 
-        <div class="text-lg text-center">
-            <p>Disponível para:</p>
-            <div
-                class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap"
-            >
-                {Astro.props.projeto.plataformas.map((plataforma) => (
-                    <TagButton tag={plataforma} />
-                ))}
+        <div>
+            <div class="text-lg text-center">
+                <p>Feito com:</p>
+                <div
+                    class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap"
+                >
+                    {Astro.props.projeto.tags.map((tag) => (
+                        <TagButton tag={tag} />
+                    ))}
+                </div>
+            </div>
+    
+            <div class="text-lg text-center">
+                <p>Disponível para:</p>
+                <div
+                    class="flex flex-row flex-wrap items-center justify-center whitespace-nowrap"
+                >
+                    {Astro.props.projeto.plataformas.map((plataforma) => (
+                        <TagButton tag={plataforma} />
+                    ))}
+                </div>
             </div>
         </div>
     </div>

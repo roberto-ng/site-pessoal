@@ -10,6 +10,8 @@ const rootDir = dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx(), tailwind(), solidJs()],
+  site: 'https://robertonazareth.dev/',
+  output: 'static',
   vite: {
     resolve: {
       alias: {
@@ -27,6 +29,14 @@ export default defineConfig({
       theme: 'dracula-soft'
     }
   },
-  site: 'https://robertonazareth.dev/',
-  output: 'static',
+  i18n: {
+    defaultLocale: 'pt-br',
+    locales: ['pt-br', 'pt-pt'],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+    fallback: {
+      'pt-pt': 'pt-br',
+    },
+  },
 });
