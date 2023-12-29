@@ -3,7 +3,7 @@ import Home from '@/src/layouts/Home.astro';
 
 console.log(Astro.preferredLocaleList)
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
     return [
         {
             params: {
