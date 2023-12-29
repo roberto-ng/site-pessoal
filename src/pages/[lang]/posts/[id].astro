@@ -1,16 +1,16 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import { Temporal } from '@js-temporal/polyfill';
 import Layout from "@/src/layouts/Layout.astro";
+import { DateTime } from "luxon";
 
 export interface Props {
-    post: CollectionEntry<'post'>;
+    post: CollectionEntry<"post">;
 }
 
 export async function getStaticPaths() {
-    const posts = await getCollection('post');
+    const posts = await getCollection("post");
     return posts.map((post) => {
-        const [lang, id] = post.slug.split('/');
+        const [lang, id] = post.slug.split("/");
 
         return {
             params: {
@@ -27,7 +27,10 @@ export async function getStaticPaths() {
 const { post } = Astro.props as Props;
 const { Content: PostContent } = await post.render();
 
-const date = Temporal.PlainDate.from(post.data.date)
+const date = DateTime.fromISO(post.data.date);
+const dataFormatada = date.toLocaleString(DateTime.DATE_SHORT, {
+    locale: "pt-br",
+});
 ---
 
 <Layout title={`Roberto Nazareth - ${post.data.title}`}>
@@ -36,8 +39,11 @@ const date = Temporal.PlainDate.from(post.data.date)
             <h1 class="mb-2 text-4xl font-bold text-zinc-900 dark:text-white">
                 {post.data.title}
             </h1>
-            <time class="m-0 text-slate-500 dark:text-zinc-400" date-time={post.data.date}>
-                Postado em: {date.toLocaleString('pt-BR')}
+            <time
+                class="m-0 text-slate-500 dark:text-zinc-400"
+                date-time={post.data.date}
+            >
+                Postado em: {dataFormatada}
             </time>
         </header>
 

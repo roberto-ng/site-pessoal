@@ -1,16 +1,10 @@
 ---
-import Home from '@/src/layouts/Home.astro';
+import Home from "@/src/layouts/Home.astro";
 
-console.log(Astro.preferredLocaleList)
+console.log(Astro.preferredLocaleList);
 
 export async function getStaticPaths() {
-    return [
-        {
-            params: {
-                lang: 'pt-br',
-            }
-        }
-    ];
+    return [{ params: { lang: "pt-br" } }];
 }
 ---
 

@@ -1,28 +1,36 @@
 ---
-import path from 'path';
-import { type CollectionEntry } from 'astro:content';
-import { Temporal } from '@js-temporal/polyfill';
+import { type CollectionEntry } from "astro:content";
+import { DateTime } from "luxon";
+import path from "path";
 
 export type Props = {
-    post: CollectionEntry<'post'>,
-    file: string,
+    post: CollectionEntry<"post">;
+    file: string;
 };
 
 const { post, file } = Astro.props;
 const id = path.parse(file).name;
 
-const date = Temporal.PlainDate.from(post.data.date);
+const date = DateTime.fromISO(post.data.date);
+const dataFormatada = date.toLocaleString(DateTime.DATE_SHORT, {
+    locale: "pt-br",
+});
 ---
 
-<div class="flex flex-col max-w-lg gap-6 p-5 mx-1 bg-white rounded shadow-lg dark:bg-zinc-800">
-    <a 
+<div
+    class="flex flex-col max-w-lg gap-6 p-5 mx-1 bg-white rounded shadow-lg dark:bg-zinc-800"
+>
+    <a
         class="no-underline text-[22px] font-bold text-zinc-900 dark:text-white"
         href={`/pt-br/posts/${id}`}
     >
         {post.data.title}
     </a>
 
-    <time class="m-0 text-slate-500 dark:text-zinc-400" date-time={post.data.date}>
-        Postado em: {date.toLocaleString('pt-BR')}
+    <time
+        class="m-0 text-slate-500 dark:text-zinc-400"
+        date-time={post.data.date}
+    >
+        Postado em: {dataFormatada}
     </time>
 </div>

@@ -1,7 +1,7 @@
 {
   "name": "@example/basics",
   "version": "0.0.1",
-  "private": true,  
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -19,9 +19,11 @@
     "@astrojs/solid-js": "3.0.3",
     "@astrojs/tailwind": "5.1.0",
     "@js-temporal/polyfill": "^0.4.4",
+    "@types/luxon": "^3.3.7",
     "astro-google-fonts-optimizer": "^0.2.2",
     "clsx": "^1.2.1",
     "immutable": "^4.2.4",
+    "luxon": "^3.4.4",
     "solid-js": "^1.6.11",
     "tailwindcss": "^3.2.7"
   }
