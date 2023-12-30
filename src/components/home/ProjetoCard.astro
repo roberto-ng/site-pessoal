@@ -8,13 +8,14 @@ interface Props {
     projeto: Projeto;
 }
 
-const { link, download_link, repo } = Astro.props.projeto;
+const { projeto } = Astro.props;
+const { link, download_link, repo } = projeto;
 
 const projetoSemLinks = link == null && download_link == null && repo == null;
 ---
 
 <div
-    transition:name={`portfolio_${Astro.props.projeto.titulo}`}
+    transition:name={`portfolio_${projeto.titulo}`}
     class={clsx([
         "w-[90vw] sm:w-[300px] sm:min-w-[300px] min-h-[460px]",
         "text-slate-700 dark:text-white bg-white dark:bg-zinc-800",
@@ -22,34 +23,34 @@ const projetoSemLinks = link == null && download_link == null && repo == null;
     ])}
 >
     <img
-        src={Astro.props.projeto.thumbnail}
+        src={projeto.thumbnail}
+        alt={`Imagem representando o projeto ${projeto.titulo}`}
         class="h-[180px] w-full object-cover rounded-t-md"
-        loading="lazy"
     />
 
     <div class="h-full p-1 pt-0 flex flex-col items-center justify-between">
         <div>
             <p class="mx-1 mt-1 text-xl font-bold text-center">
-                {Astro.props.projeto.titulo}
+                {projeto.titulo}
             </p>
     
             <p class="mx-1 text-center">
-                {Astro.props.projeto.descricao}
+                {projeto.descricao}
             </p>
     
             <div class="flex flex-row flex-wrap justify-center">
-                {(Astro.props.projeto.link != null) && (
-                    <CardLinkButton href={Astro.props.projeto.link!} text="Abrir site" />
+                {(projeto.link != null) && (
+                    <CardLinkButton href={projeto.link!} text="Abrir site" />
                 )}
     
-                {(Astro.props.projeto.download_link != null)  && (
+                {(projeto.download_link != null)  && (
                     <CardLinkButton
                         href={Astro.props.projeto.download_link!}
                         text="Baixar"
                     />
                 )}
     
-                {(Astro.props.projeto.repo != null) && (
+                {(projeto.repo != null) && (
                     <CardLinkButton
                         href={`https://github.com/roberto-ng/${Astro.props.projeto.repo}`}
                         text="Repositório"

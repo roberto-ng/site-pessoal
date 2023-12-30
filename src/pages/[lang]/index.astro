@@ -1,11 +1,16 @@
 ---
+import type { GetStaticPaths } from "astro";
 import Home from "@/src/layouts/Home.astro";
 
-console.log(Astro.preferredLocaleList);
-
-export async function getStaticPaths() {
-    return [{ params: { lang: "pt-br" } }];
-}
+export const getStaticPaths = (() => {
+    return [
+        {
+            params: {
+                lang: "pt-br",
+            },
+        },
+    ];
+}) satisfies GetStaticPaths;
 ---
 
 <Home />

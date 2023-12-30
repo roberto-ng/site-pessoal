@@ -29,14 +29,14 @@ export default defineConfig({
       theme: 'dracula-soft'
     }
   },
-  i18n: {
-    defaultLocale: 'pt-br',
-    locales: ['pt-br', 'pt-pt'],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-    fallback: {
-      'pt-pt': 'pt-br',
-    },
-  },
+  // i18n: {
+  //   defaultLocale: 'pt-br',
+  //   locales: ['pt-br', 'pt-pt'],
+  //   routing: {
+  //     prefixDefaultLocale: false,
+  //   },
+  //   fallback: {
+  //     'pt-pt': 'pt-br',
+  //   },
+  // },
 });
