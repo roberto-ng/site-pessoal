@@ -8,5 +8,5 @@ tags:
   - 'Next.js'
   - 'Tailwind'
 plataformas:
-  - 'Desktop'
+  - 'Web'
 ---
