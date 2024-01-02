@@ -6,6 +6,7 @@ link: 'https://rede.seocredito.com.br'
 tags:
   - 'JavaScript'
   - 'React Native'
+  - 'Expo'
 plataformas:
   - 'Web'
   - 'Android'
