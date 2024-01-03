@@ -15,7 +15,6 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { tag: selectedTag } = Astro.params;
-console.log(selectedTag);
 if (selectedTag == null) {
     throw new Error("O parametro tag é nulo");
 }
