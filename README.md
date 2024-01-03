@@ -7,7 +7,7 @@ Primeiro, inicie o servidor de desenvolvimento:
 ```bash
 npm run dev
 # ou
-yarn dev
+bun dev
 ```
 
 Abra a URL [http://localhost:3000](http://localhost:3000) no seu navegador.
