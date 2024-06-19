@@ -1,6 +1,6 @@
 ---
-titulo: 'Painel Admin - Norway Digital'
-descricao: 'Painel de administração da empresa NorwayBank.'
+titulo: 'Painel Norway Digital'
+descricao: 'Usado para o gerenciamento de franquias.'
 thumbnail: '/assets/projetos/painel-admin-norway.webp'
 tags:
   - 'Tailwind'
