@@ -1,5 +1,5 @@
 ---
-titulo: 'Comunidade - Seo Crédito'
+titulo: 'Seo Crédito - Comunidade'
 descricao: 'Rede social para encontrar sócios e investidores.'
 thumbnail: '/assets/projetos/seo-comunidade.webp'
 link: 'https://rede.seocredito.com.br'
